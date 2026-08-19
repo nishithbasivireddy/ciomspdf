@@ -1,48 +1,116 @@
 ﻿from pathlib import Path
 
-from src.field_schema import ALL_FIELDS
-from src.extractors.plain_python_extractor import extract_plain_python
-from src.utils.json_utils import load_json, save_json
+import joblib
+import pymupdf as fitz
+
+from src.field_schema import ALL_FIELDS, CHECKBOX_SCHEMA
+from src.utils.json_utils import save_json
+from src.ml.train_field_classifier import train_and_save_model
+
+
+MODEL_PATH = "models/field_classifier.joblib"
+
+
+def load_or_train_model():
+    if not Path(MODEL_PATH).exists():
+        train_and_save_model()
+
+    return joblib.load(MODEL_PATH)
+
+
+def normalize_checkbox_value(value):
+    value = str(value).strip().lower()
+
+    if value == "yes":
+        return "Yes"
+
+    return "Off"
+
+
+def extract_pdf_candidates(pdf_path):
+    doc = fitz.open(pdf_path)
+    page = doc[0]
+
+    candidates = []
+
+    for widget in page.widgets() or []:
+        field_name = widget.field_name
+        field_value = widget.field_value
+
+        if field_value is None:
+            field_value = ""
+
+        field_value = str(field_value).strip()
+
+        if field_value == "":
+            continue
+
+        candidate_text = f"{field_name} {field_value}"
+
+        candidates.append(
+            {
+                "pdf_field_name": field_name,
+                "value": field_value,
+                "candidate_text": candidate_text
+            }
+        )
+
+    doc.close()
+
+    return candidates
 
 
 def extract_custom_ml(
-    pdf_path="data/filled_cioms.pdf",
-    plain_output_path="outputs/json/extracted_plain_python.json",
+    pdf_path="data/filled_form.pdf",
     output_path="outputs/json/extracted_custom_ml.json"
 ):
-    """
-    Custom ML extractor placeholder/baseline.
-
-    Ground truth is NOT required for extraction.
-    Ground truth is required only for final quality comparison.
-
-    Current logic:
-    1. If plain-python output exists, use it as extracted field candidates.
-    2. If plain-python output does not exist, generate it from uploaded PDF.
-    3. Save a normalized output with the expected field keys.
-
-    Later this file can be upgraded into a trained custom ML model using synthetic labelled PDFs.
-    """
-
     if not Path(pdf_path).exists():
         extracted = {field: "" for field in ALL_FIELDS}
         extracted["custom_ml_status"] = "Failed: uploaded PDF not found"
         save_json(extracted, output_path)
         return extracted
 
-    if not Path(plain_output_path).exists():
-        plain_output = extract_plain_python(pdf_path=pdf_path, output_path=plain_output_path)
-    else:
-        plain_output = load_json(plain_output_path)
+    model = load_or_train_model()
+    candidates = extract_pdf_candidates(pdf_path)
 
     extracted = {}
 
     for field in ALL_FIELDS:
-        extracted[field] = plain_output.get(field, "")
+        if field in CHECKBOX_SCHEMA:
+            extracted[field] = "Off"
+        else:
+            extracted[field] = ""
 
-    extracted["custom_ml_status"] = "Success: baseline custom ML extraction completed without ground truth"
+    confidence_tracker = {}
+
+    for item in candidates:
+        candidate_text = item["candidate_text"]
+        raw_value = item["value"]
+
+        predicted_field = model.predict([candidate_text])[0]
+
+        confidence = 1.0
+
+        try:
+            probabilities = model.predict_proba([candidate_text])[0]
+            confidence = max(probabilities)
+        except Exception:
+            confidence = 1.0
+
+        current_confidence = confidence_tracker.get(predicted_field, -1)
+
+        if confidence >= current_confidence:
+            if predicted_field in CHECKBOX_SCHEMA:
+                extracted[predicted_field] = normalize_checkbox_value(raw_value)
+            else:
+                extracted[predicted_field] = raw_value
+
+            confidence_tracker[predicted_field] = confidence
+
+    extracted["custom_ml_status"] = "Success: trained TF-IDF + Logistic Regression classifier used"
 
     save_json(extracted, output_path)
+
     return extracted
 
 
