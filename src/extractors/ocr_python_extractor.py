@@ -1,27 +1,27 @@
-﻿from pathlib import Path
-import warnings
+﻿from io import BytesIO
+from pathlib import Path
+import os
 
-import easyocr
 import numpy as np
 import pymupdf as fitz
+import requests
 from PIL import Image, ImageOps, ImageEnhance
+from dotenv import load_dotenv
 
 from src.field_schema import FIELD_SCHEMA, CHECKBOX_SCHEMA, ALL_FIELDS
 from src.utils.json_utils import save_json
 
-warnings.filterwarnings("ignore", category=UserWarning)
-warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-_reader = None
+def get_secret_value(key, default=""):
+    try:
+        import streamlit as st
+        if key in st.secrets:
+            return str(st.secrets[key]).strip()
+    except Exception:
+        pass
 
-
-def get_easyocr_reader():
-    global _reader
-
-    if _reader is None:
-        _reader = easyocr.Reader(["en"], gpu=False)
-
-    return _reader
+    load_dotenv()
+    return os.getenv(key, default).strip()
 
 
 def clean_ocr_text(text):
@@ -40,6 +40,7 @@ def preprocess_crop(image):
     image = image.convert("L")
     image = ImageOps.autocontrast(image)
     image = ImageEnhance.Contrast(image).enhance(2.0)
+
     return image
 
 
@@ -54,6 +55,7 @@ def render_page_to_image(pdf_path, image_path="outputs/images/ocr_rendered_page.
     pix.save(image_path)
 
     doc.close()
+
     return image_path
 
 
@@ -69,32 +71,13 @@ def build_pdf_field_reverse_map():
     return reverse_map
 
 
-def crop_widget(page_image, rect, zoom=4, padding=10):
+def crop_widget(page_image, rect, zoom=4, padding=12):
     left = max(int(rect.x0 * zoom) - padding, 0)
     top = max(int(rect.y0 * zoom) - padding, 0)
     right = min(int(rect.x1 * zoom) + padding, page_image.width)
     bottom = min(int(rect.y1 * zoom) + padding, page_image.height)
 
     return page_image.crop((left, top, right, bottom))
-
-
-def ocr_text_crop(crop):
-    reader = get_easyocr_reader()
-    processed = preprocess_crop(crop)
-
-    image_array = np.array(processed)
-
-    results = reader.readtext(
-        image_array,
-        detail=0,
-        paragraph=True
-    )
-
-    if not results:
-        return ""
-
-    text = " ".join(results)
-    return clean_ocr_text(text)
 
 
 def detect_checkbox(crop):
@@ -120,10 +103,77 @@ def detect_checkbox(crop):
     return "Yes" if dark_ratio > 0.04 else "Off"
 
 
+def image_to_png_bytes(image):
+    output = BytesIO()
+    image.save(output, format="PNG")
+    output.seek(0)
+
+    return output
+
+
+def call_ocr_space(image, api_key, api_url, engine):
+    processed = preprocess_crop(image)
+    image_bytes = image_to_png_bytes(processed)
+
+    payload = {
+        "apikey": api_key,
+        "language": "eng",
+        "isOverlayRequired": "false",
+        "OCREngine": str(engine),
+        "scale": "true"
+    }
+
+    files = {
+        "file": ("field.png", image_bytes, "image/png")
+    }
+
+    response = requests.post(
+        api_url,
+        data=payload,
+        files=files,
+        timeout=90
+    )
+
+    response.raise_for_status()
+    data = response.json()
+
+    if data.get("IsErroredOnProcessing"):
+        error_message = data.get("ErrorMessage") or data.get("ErrorDetails") or "OCR processing failed"
+
+        if isinstance(error_message, list):
+            error_message = " ".join(str(item) for item in error_message)
+
+        raise RuntimeError(str(error_message))
+
+    parsed_results = data.get("ParsedResults", [])
+
+    if not parsed_results:
+        return ""
+
+    text_parts = []
+
+    for item in parsed_results:
+        text_parts.append(item.get("ParsedText", ""))
+
+    return clean_ocr_text(" ".join(text_parts))
+
+
 def extract_ocr_python(
     pdf_path="data/filled_form.pdf",
     output_path="outputs/json/extracted_ocr_python.json"
 ):
+    default_url = "https://" + "api.ocr.space/parse/image"
+
+    api_key = get_secret_value("OCR_SPACE_API_KEY")
+    api_url = get_secret_value("OCR_SPACE_API_URL", default_url)
+    engine = get_secret_value("OCR_SPACE_ENGINE", "2")
+
+    if not api_key:
+        extracted = {field: "" for field in ALL_FIELDS}
+        extracted["ocr_status"] = "Missing OCR_SPACE_API_KEY. Add it in .env locally or Streamlit Secrets in cloud."
+        save_json(extracted, output_path)
+        return extracted
+
     if not Path(pdf_path).exists():
         extracted = {field: "" for field in ALL_FIELDS}
         extracted["ocr_status"] = "Failed: uploaded PDF not found"
@@ -158,7 +208,11 @@ def extract_ocr_python(
         if output_key in CHECKBOX_SCHEMA:
             value = detect_checkbox(crop)
         else:
-            value = ocr_text_crop(crop)
+            try:
+                value = call_ocr_space(crop, api_key, api_url, engine)
+            except Exception as error:
+                value = ""
+                debug_rows.append(f"{output_key}: OCR failed: {str(error)}")
 
         extracted[output_key] = value
         debug_rows.append(f"{output_key}: {value}")
@@ -170,16 +224,6 @@ def extract_ocr_python(
     with open("outputs/reports/ocr_field_debug.txt", "w", encoding="utf-8") as file:
         file.write("\n".join(debug_rows))
 
-    reader = get_easyocr_reader()
-    full_page_results = reader.readtext(
-        np.array(page_image),
-        detail=0,
-        paragraph=True
-    )
-
-    with open("outputs/reports/ocr_raw_text.txt", "w", encoding="utf-8") as file:
-        file.write("\n".join(full_page_results))
-
     extracted["ocr_status"] = "Success"
 
     save_json(extracted, output_path)
@@ -189,5 +233,5 @@ def extract_ocr_python(
 
 if __name__ == "__main__":
     result = extract_ocr_python()
-    print("OCR extraction completed.")
+    print("OCR.space extraction completed.")
     print(result)

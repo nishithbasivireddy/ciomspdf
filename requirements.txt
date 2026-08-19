@@ -8,8 +8,5 @@ seaborn
 python-dotenv
 openai
 pillow
-easyocr
-torch
-torchvision
 openpyxl
-opencv-python-headless
+requests

@@ -17,3 +17,4 @@ archive/
 patch_upload_rerun.py
 *.log
 .DS_Store
+.vscode/
