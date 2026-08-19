@@ -1,0 +1,15 @@
+﻿streamlit
+pymupdf
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+python-dotenv
+openai
+pillow
+opencv-python
+easyocr
+torch
+torchvision
+openpyxl
