@@ -1,0 +1,1450 @@
+{
+  "loss": 0.1023989450186491,
+  "sample_count": 240,
+  "correct_count": 237,
+  "accuracy": 0.9875,
+  "predictions": [
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0270_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0270_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0270_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0270_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0270_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0270_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0270_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0270_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0271_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0271_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0271_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0271_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0271_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0271_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0271_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0271_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0272_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0272_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0272_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0272_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0272_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0272_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0272_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0272_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0273_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0273_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0273_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0273_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0273_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0273_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0273_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0273_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0274_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0274_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0274_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0274_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0274_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0274_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0274_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0274_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0275_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0275_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0275_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0275_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0275_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0275_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0275_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0275_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0276_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0276_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0276_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0276_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0276_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0276_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0276_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0276_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0277_00.png",
+      "reference": 1,
+      "prediction": 0,
+      "correct": false
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0277_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0277_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0277_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0277_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0277_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0277_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0277_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0278_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0278_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0278_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0278_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0278_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0278_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0278_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0278_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0279_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0279_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0279_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0279_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0279_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0279_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0279_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0279_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0280_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0280_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0280_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0280_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0280_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0280_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0280_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0280_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0281_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0281_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0281_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0281_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0281_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0281_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0281_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0281_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0282_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0282_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0282_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0282_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0282_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0282_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0282_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0282_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0283_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0283_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0283_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0283_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0283_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0283_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0283_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0283_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0284_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0284_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0284_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0284_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0284_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0284_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0284_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0284_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0285_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0285_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0285_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0285_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0285_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0285_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0285_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0285_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0286_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0286_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0286_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0286_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0286_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0286_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0286_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0286_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0287_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0287_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0287_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0287_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0287_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0287_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0287_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0287_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0288_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0288_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0288_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0288_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0288_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0288_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0288_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0288_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0289_00.png",
+      "reference": 1,
+      "prediction": 0,
+      "correct": false
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0289_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0289_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0289_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0289_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0289_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0289_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0289_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0290_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0290_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0290_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0290_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0290_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0290_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0290_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0290_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0291_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0291_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0291_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0291_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0291_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0291_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0291_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0291_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0292_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0292_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0292_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0292_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0292_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0292_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0292_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0292_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0293_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0293_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0293_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0293_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0293_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0293_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0293_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0293_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0294_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0294_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0294_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0294_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0294_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0294_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0294_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0294_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0295_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0295_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0295_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0295_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0295_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0295_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0295_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0295_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0296_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0296_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0296_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0296_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0296_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0296_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0296_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0296_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0297_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0297_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0297_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0297_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0297_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0297_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0297_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0297_07.png",
+      "reference": 1,
+      "prediction": 0,
+      "correct": false
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0298_00.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0298_01.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0298_02.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0298_03.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0298_04.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0298_05.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0298_06.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0298_07.png",
+      "reference": 0,
+      "prediction": 0,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0299_00.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0299_01.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0299_02.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0299_03.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0299_04.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0299_05.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0299_06.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    },
+    {
+      "image_path": "data\\ml_training\\checkbox\\images\\test_0299_07.png",
+      "reference": 1,
+      "prediction": 1,
+      "correct": true
+    }
+  ],
+  "best_epoch": 1,
+  "best_validation_accuracy": 1.0
+}

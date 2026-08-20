@@ -1,0 +1,66 @@
+[
+  {
+    "epoch": 1,
+    "training_loss": 0.6388329512693666,
+    "validation_loss": 0.41998277604579926,
+    "validation_exact_match_accuracy": 0.7454545454545455,
+    "validation_character_error_rate": 0.07832168344082648,
+    "validation_word_error_rate": 0.18535353535353544
+  },
+  {
+    "epoch": 2,
+    "training_loss": 0.3414690683285395,
+    "validation_loss": 0.2931871616414615,
+    "validation_exact_match_accuracy": 0.7575757575757576,
+    "validation_character_error_rate": 0.06357905034293021,
+    "validation_word_error_rate": 0.1631313131313132
+  },
+  {
+    "epoch": 3,
+    "training_loss": 0.24821867250809163,
+    "validation_loss": 0.22492107784464246,
+    "validation_exact_match_accuracy": 0.8303030303030303,
+    "validation_character_error_rate": 0.05011316933659044,
+    "validation_word_error_rate": 0.11313131313131314
+  },
+  {
+    "epoch": 4,
+    "training_loss": 0.1976188736770189,
+    "validation_loss": 0.1763900381823381,
+    "validation_exact_match_accuracy": 0.8727272727272727,
+    "validation_character_error_rate": 0.037701353800425,
+    "validation_word_error_rate": 0.08282828282828282
+  },
+  {
+    "epoch": 5,
+    "training_loss": 0.16651652238585732,
+    "validation_loss": 0.14686743329678262,
+    "validation_exact_match_accuracy": 0.9,
+    "validation_character_error_rate": 0.03445564483103181,
+    "validation_word_error_rate": 0.07020202020202021
+  },
+  {
+    "epoch": 6,
+    "training_loss": 0.1390859221305811,
+    "validation_loss": 0.12342023831747827,
+    "validation_exact_match_accuracy": 0.9212121212121213,
+    "validation_character_error_rate": 0.02478434090276195,
+    "validation_word_error_rate": 0.05757575757575758
+  },
+  {
+    "epoch": 7,
+    "training_loss": 0.12035765857859092,
+    "validation_loss": 0.11226719724280494,
+    "validation_exact_match_accuracy": 0.9212121212121213,
+    "validation_character_error_rate": 0.022874009518746356,
+    "validation_word_error_rate": 0.05656565656565657
+  },
+  {
+    "epoch": 8,
+    "training_loss": 0.10385671673963467,
+    "validation_loss": 0.096946990073082,
+    "validation_exact_match_accuracy": 0.9363636363636364,
+    "validation_character_error_rate": 0.020858617503354344,
+    "validation_word_error_rate": 0.04747474747474747
+  }
+]

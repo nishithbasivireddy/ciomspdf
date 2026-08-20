@@ -1,0 +1,2650 @@
+{
+  "loss": 0.0980005878068152,
+  "sample_count": 330,
+  "exact_match_count": 309,
+  "exact_match_accuracy": 0.9363636363636364,
+  "mean_character_error_rate": 0.02382403809718755,
+  "mean_word_error_rate": 0.051010101010101006,
+  "predictions": [
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_patient_initials.png",
+      "reference": "HX",
+      "prediction": "HX",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_country.png",
+      "reference": "France",
+      "prediction": "France",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_date_of_birth_day.png",
+      "reference": "13",
+      "prediction": "13",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_date_of_birth_month.png",
+      "reference": "10",
+      "prediction": "10",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_date_of_birth_year.png",
+      "reference": "1995",
+      "prediction": "1995",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_age.png",
+      "reference": "19",
+      "prediction": "19",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_reaction_onset_day.png",
+      "reference": "21",
+      "prediction": "21",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_reaction_onset_year.png",
+      "reference": "2023",
+      "prediction": "2023",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_reaction_onset_month.png",
+      "reference": "06",
+      "prediction": "06",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_suspect_drugs.png",
+      "reference": "Crocin",
+      "prediction": "Crocin",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_daily_doses.png",
+      "reference": "500 mg once daily",
+      "prediction": "500 mg once daily",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_routes_of_administration.png",
+      "reference": "Topical",
+      "prediction": "Topical",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_indications.png",
+      "reference": "high blood pressure",
+      "prediction": "high blood pressure",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_therapy_dates.png",
+      "reference": "1954-02-08 to 12/05/1960",
+      "prediction": "1954-02-08 to 12/05/1960",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_therapy_duration.png",
+      "reference": "15 weeks",
+      "prediction": "15 weeks",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_concomitant_drugs.png",
+      "reference": "Omeprazole 40 mg",
+      "prediction": "Paeraoe 0 mg",
+      "exact_match": false,
+      "character_error_rate": 0.375,
+      "word_error_rate": 0.6666666666666666
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_history.png",
+      "reference": "type 2 diabetes",
+      "prediction": "type 2 diabetes",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_manufacturer_name_address.png",
+      "reference": "Mumbai",
+      "prediction": "Mumbai",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_mfr_control_no.png",
+      "reference": "381232",
+      "prediction": "381232",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_date_received.png",
+      "reference": "1952-10-08",
+      "prediction": "1952-10-08",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0135_report_date.png",
+      "reference": "20/04/2009",
+      "prediction": "20/04/2009",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_patient_initials.png",
+      "reference": "KC",
+      "prediction": "KC",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_country.png",
+      "reference": "France",
+      "prediction": "France",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_date_of_birth_day.png",
+      "reference": "13",
+      "prediction": "13",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_date_of_birth_month.png",
+      "reference": "05",
+      "prediction": "05",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_date_of_birth_year.png",
+      "reference": "1956",
+      "prediction": "1956",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_age.png",
+      "reference": "58",
+      "prediction": "58",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_reaction_onset_day.png",
+      "reference": "12",
+      "prediction": "12",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_reaction_onset_year.png",
+      "reference": "2023",
+      "prediction": "2023",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_reaction_onset_month.png",
+      "reference": "09",
+      "prediction": "09",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_suspect_drugs.png",
+      "reference": "Metformin",
+      "prediction": "Metformin",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_daily_doses.png",
+      "reference": "5 ml",
+      "prediction": "5 ml",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_routes_of_administration.png",
+      "reference": "Topical",
+      "prediction": "Topical",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_indications.png",
+      "reference": "gastric reflux",
+      "prediction": "astric reflux",
+      "exact_match": false,
+      "character_error_rate": 0.07142857142857142,
+      "word_error_rate": 0.5
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_therapy_dates.png",
+      "reference": "17-09-1961 to 05-04-1997",
+      "prediction": "17-09-1961 to 05-04-1997",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_therapy_duration.png",
+      "reference": "13 days",
+      "prediction": "13 days",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_concomitant_drugs.png",
+      "reference": "Paracetamol",
+      "prediction": "Praraolon",
+      "exact_match": false,
+      "character_error_rate": 0.6363636363636364,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_history.png",
+      "reference": "penicillin allergy",
+      "prediction": "penicillin allergy",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_manufacturer_name_address.png",
+      "reference": "Chennai",
+      "prediction": "Chennai",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_mfr_control_no.png",
+      "reference": "175229",
+      "prediction": "175229",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_date_received.png",
+      "reference": "13/08/1957",
+      "prediction": "13/08/1957",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0136_report_date.png",
+      "reference": "13/12/1994",
+      "prediction": "13/12/1994",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_patient_initials.png",
+      "reference": "HX",
+      "prediction": "HX",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_country.png",
+      "reference": "Germany",
+      "prediction": "Germany",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_date_of_birth_day.png",
+      "reference": "10",
+      "prediction": "10",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_date_of_birth_month.png",
+      "reference": "08",
+      "prediction": "08",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_date_of_birth_year.png",
+      "reference": "1983",
+      "prediction": "1983",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_age.png",
+      "reference": "81",
+      "prediction": "81",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_sex.png",
+      "reference": "M",
+      "prediction": "M",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_reaction_onset_day.png",
+      "reference": "05",
+      "prediction": "05",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_reaction_onset_year.png",
+      "reference": "2025",
+      "prediction": "2025",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_reaction_onset_month.png",
+      "reference": "01",
+      "prediction": "01",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_suspect_drugs.png",
+      "reference": "Cefixime 75 mg",
+      "prediction": "Cefixime 75 mg",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_daily_doses.png",
+      "reference": "20 mg",
+      "prediction": "20 mg",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_routes_of_administration.png",
+      "reference": "Intramuscular",
+      "prediction": "Intramuscular",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_indications.png",
+      "reference": "high blood pressure",
+      "prediction": "high blood pressure",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_therapy_dates.png",
+      "reference": "23-03-2009 to 1993-05-17",
+      "prediction": "23-03-2009 to 1993-05-17",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_therapy_duration.png",
+      "reference": "13 days",
+      "prediction": "13 days",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_concomitant_drugs.png",
+      "reference": "Crocin",
+      "prediction": "Coin",
+      "exact_match": false,
+      "character_error_rate": 0.3333333333333333,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_history.png",
+      "reference": "type 2 diabetes",
+      "prediction": "type 2 diabetes",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_manufacturer_name_address.png",
+      "reference": "Hyderabad",
+      "prediction": "Hyderabad",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_mfr_control_no.png",
+      "reference": "489835",
+      "prediction": "489835",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_date_received.png",
+      "reference": "17/11/1996",
+      "prediction": "17/11/1996",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0137_report_date.png",
+      "reference": "06/05/1987",
+      "prediction": "06/05/1987",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_patient_initials.png",
+      "reference": "AO",
+      "prediction": "AQ",
+      "exact_match": false,
+      "character_error_rate": 0.5,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_country.png",
+      "reference": "Australia",
+      "prediction": "Australia",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_date_of_birth_day.png",
+      "reference": "27",
+      "prediction": "27",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_date_of_birth_month.png",
+      "reference": "10",
+      "prediction": "10",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_date_of_birth_year.png",
+      "reference": "1979",
+      "prediction": "1979",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_age.png",
+      "reference": "48",
+      "prediction": "48",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_reaction_onset_day.png",
+      "reference": "06",
+      "prediction": "06",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_reaction_onset_year.png",
+      "reference": "2020",
+      "prediction": "2020",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_reaction_onset_month.png",
+      "reference": "07",
+      "prediction": "07",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_suspect_drugs.png",
+      "reference": "Amoxicillin",
+      "prediction": "Amoxicillin",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_daily_doses.png",
+      "reference": "5 ml",
+      "prediction": "5 ml",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_routes_of_administration.png",
+      "reference": "Intramuscular",
+      "prediction": "Intramuscular",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_indications.png",
+      "reference": "after food",
+      "prediction": "after food",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_therapy_dates.png",
+      "reference": "22-02-1953 to 06-07-2009",
+      "prediction": "22-02-1953 to 06-07-2009",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_therapy_duration.png",
+      "reference": "10 weeks",
+      "prediction": "10 weeks",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_concomitant_drugs.png",
+      "reference": "Amoxicillin",
+      "prediction": "Aeroiln",
+      "exact_match": false,
+      "character_error_rate": 0.6363636363636364,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_history.png",
+      "reference": "type 2 diabetes",
+      "prediction": "type 2 diabetes",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_manufacturer_name_address.png",
+      "reference": "Chennai",
+      "prediction": "Chennai",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_mfr_control_no.png",
+      "reference": "420102",
+      "prediction": "420102",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_date_received.png",
+      "reference": "22-03-2015",
+      "prediction": "22-03-2015",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0138_report_date.png",
+      "reference": "21-11-2019",
+      "prediction": "21-11-2019",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_patient_initials.png",
+      "reference": "YJN",
+      "prediction": "YJN",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_country.png",
+      "reference": "Brazil",
+      "prediction": "Brazil",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_date_of_birth_day.png",
+      "reference": "13",
+      "prediction": "13",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_date_of_birth_month.png",
+      "reference": "07",
+      "prediction": "07",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_date_of_birth_year.png",
+      "reference": "2000",
+      "prediction": "2000",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_age.png",
+      "reference": "64",
+      "prediction": "64",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_reaction_onset_day.png",
+      "reference": "06",
+      "prediction": "06",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_reaction_onset_year.png",
+      "reference": "2026",
+      "prediction": "2026",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_reaction_onset_month.png",
+      "reference": "09",
+      "prediction": "09",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_suspect_drugs.png",
+      "reference": "Cefixime",
+      "prediction": "Cefixime",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_daily_doses.png",
+      "reference": "20 mg",
+      "prediction": "20 mg",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_routes_of_administration.png",
+      "reference": "Subcutaneous",
+      "prediction": "Subcutaneous",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_indications.png",
+      "reference": "gastric reflux",
+      "prediction": "astric reflux",
+      "exact_match": false,
+      "character_error_rate": 0.07142857142857142,
+      "word_error_rate": 0.5
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_therapy_dates.png",
+      "reference": "2027-04-23 to 1970-11-24",
+      "prediction": "2027-04-23 to 1970-11-24",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_therapy_duration.png",
+      "reference": "5 years",
+      "prediction": "5 years",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_concomitant_drugs.png",
+      "reference": "Metformin 20 mg",
+      "prediction": "Peroin 50 mg",
+      "exact_match": false,
+      "character_error_rate": 0.4,
+      "word_error_rate": 0.6666666666666666
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_history.png",
+      "reference": "history of hypertension",
+      "prediction": "history of hypertension",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_manufacturer_name_address.png",
+      "reference": "Mumbai",
+      "prediction": "Mumbai",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_mfr_control_no.png",
+      "reference": "947658",
+      "prediction": "947658",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_date_received.png",
+      "reference": "2015-06-07",
+      "prediction": "2015-06-07",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0139_report_date.png",
+      "reference": "1987-05-10",
+      "prediction": "1987-05-10",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_patient_initials.png",
+      "reference": "WA",
+      "prediction": "WA",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_country.png",
+      "reference": "Brazil",
+      "prediction": "Brazil",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_date_of_birth_day.png",
+      "reference": "14",
+      "prediction": "14",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_date_of_birth_month.png",
+      "reference": "09",
+      "prediction": "09",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_date_of_birth_year.png",
+      "reference": "1991",
+      "prediction": "1991",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_age.png",
+      "reference": "64",
+      "prediction": "64",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_reaction_onset_day.png",
+      "reference": "13",
+      "prediction": "13",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_reaction_onset_year.png",
+      "reference": "2022",
+      "prediction": "2022",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_reaction_onset_month.png",
+      "reference": "11",
+      "prediction": "11",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_suspect_drugs.png",
+      "reference": "Cefixime 75 mg",
+      "prediction": "Cefixime 75 mg",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_daily_doses.png",
+      "reference": "250 mg twice daily",
+      "prediction": "250 mg twice daily",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_routes_of_administration.png",
+      "reference": "Topical",
+      "prediction": "Topical",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_indications.png",
+      "reference": "for fever",
+      "prediction": "for fever",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_therapy_dates.png",
+      "reference": "1993-04-28 to 20/11/1973",
+      "prediction": "1993-04-28 to 20/11/1973",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_therapy_duration.png",
+      "reference": "4 years",
+      "prediction": "4 years",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_concomitant_drugs.png",
+      "reference": "Crocin",
+      "prediction": "Coin",
+      "exact_match": false,
+      "character_error_rate": 0.3333333333333333,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_history.png",
+      "reference": "history of hypertension",
+      "prediction": "history of hypertension",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_manufacturer_name_address.png",
+      "reference": "Bengaluru",
+      "prediction": "Bengaluru",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_mfr_control_no.png",
+      "reference": "783209",
+      "prediction": "783209",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_date_received.png",
+      "reference": "2009-06-03",
+      "prediction": "2009-06-03",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0140_report_date.png",
+      "reference": "05/03/2017",
+      "prediction": "05/03/2017",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_patient_initials.png",
+      "reference": "YC",
+      "prediction": "YC",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_country.png",
+      "reference": "France",
+      "prediction": "France",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_date_of_birth_day.png",
+      "reference": "06",
+      "prediction": "06",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_date_of_birth_month.png",
+      "reference": "07",
+      "prediction": "07",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_date_of_birth_year.png",
+      "reference": "1997",
+      "prediction": "1997",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_age.png",
+      "reference": "49",
+      "prediction": "49",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_sex.png",
+      "reference": "M",
+      "prediction": "M",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_reaction_onset_day.png",
+      "reference": "18",
+      "prediction": "18",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_reaction_onset_year.png",
+      "reference": "2027",
+      "prediction": "2027",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_reaction_onset_month.png",
+      "reference": "08",
+      "prediction": "08",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_suspect_drugs.png",
+      "reference": "Cetirizine",
+      "prediction": "Cetirizine",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_daily_doses.png",
+      "reference": "75 mg daily",
+      "prediction": "75 mg daily",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_routes_of_administration.png",
+      "reference": "Oral",
+      "prediction": "Oral",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_indications.png",
+      "reference": "for pain",
+      "prediction": "for pain",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_therapy_dates.png",
+      "reference": "20/11/1968 to 19/03/1976",
+      "prediction": "20/11/1968 to 19/03/1976",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_therapy_duration.png",
+      "reference": "9 years",
+      "prediction": "9 years",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_concomitant_drugs.png",
+      "reference": "Azithromycin 40 mg",
+      "prediction": "Airmoin 0 mg",
+      "exact_match": false,
+      "character_error_rate": 0.3888888888888889,
+      "word_error_rate": 0.6666666666666666
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_history.png",
+      "reference": "penicillin allergy",
+      "prediction": "penicillin allergy",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_manufacturer_name_address.png",
+      "reference": "Pune",
+      "prediction": "Pune",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_mfr_control_no.png",
+      "reference": "566626",
+      "prediction": "566626",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_date_received.png",
+      "reference": "1967-07-27",
+      "prediction": "1967-07-27",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0141_report_date.png",
+      "reference": "06/11/1965",
+      "prediction": "06/11/1965",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_patient_initials.png",
+      "reference": "MQ",
+      "prediction": "MQ",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_country.png",
+      "reference": "India",
+      "prediction": "India",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_date_of_birth_day.png",
+      "reference": "12",
+      "prediction": "12",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_date_of_birth_month.png",
+      "reference": "08",
+      "prediction": "08",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_date_of_birth_year.png",
+      "reference": "1986",
+      "prediction": "1986",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_age.png",
+      "reference": "88",
+      "prediction": "88",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_reaction_onset_day.png",
+      "reference": "02",
+      "prediction": "02",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_reaction_onset_year.png",
+      "reference": "2022",
+      "prediction": "2022",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_reaction_onset_month.png",
+      "reference": "07",
+      "prediction": "07",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_suspect_drugs.png",
+      "reference": "Aspirin 100 mg",
+      "prediction": "Aspirin 100 mg",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_daily_doses.png",
+      "reference": "500 mg once daily",
+      "prediction": "500 mg once daily",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_routes_of_administration.png",
+      "reference": "Intramuscular",
+      "prediction": "Intramuscular",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_indications.png",
+      "reference": "for infection",
+      "prediction": "for infection",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_therapy_dates.png",
+      "reference": "1993-07-27 to 03/07/1985",
+      "prediction": "1993-07-27 to 03/07/1985",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_therapy_duration.png",
+      "reference": "5 years",
+      "prediction": "5 years",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_concomitant_drugs.png",
+      "reference": "Amoxicillin 75 mg",
+      "prediction": "Ampin 5 mg",
+      "exact_match": false,
+      "character_error_rate": 0.47058823529411764,
+      "word_error_rate": 0.6666666666666666
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_history.png",
+      "reference": "no relevant history",
+      "prediction": "o relevant history",
+      "exact_match": false,
+      "character_error_rate": 0.05263157894736842,
+      "word_error_rate": 0.3333333333333333
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_manufacturer_name_address.png",
+      "reference": "Chennai",
+      "prediction": "Chennai",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_mfr_control_no.png",
+      "reference": "147031",
+      "prediction": "147031",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_date_received.png",
+      "reference": "1987-04-27",
+      "prediction": "1987-04-27",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0142_report_date.png",
+      "reference": "17-09-1983",
+      "prediction": "17-09-1983",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_patient_initials.png",
+      "reference": "ME",
+      "prediction": "ME",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_country.png",
+      "reference": "Japan",
+      "prediction": "Japan",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_date_of_birth_day.png",
+      "reference": "12",
+      "prediction": "12",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_date_of_birth_month.png",
+      "reference": "08",
+      "prediction": "08",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_date_of_birth_year.png",
+      "reference": "1973",
+      "prediction": "1973",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_age.png",
+      "reference": "57",
+      "prediction": "57",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_sex.png",
+      "reference": "M",
+      "prediction": "M",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_reaction_onset_day.png",
+      "reference": "18",
+      "prediction": "18",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_reaction_onset_year.png",
+      "reference": "2024",
+      "prediction": "2024",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_reaction_onset_month.png",
+      "reference": "04",
+      "prediction": "04",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_suspect_drugs.png",
+      "reference": "Metformin",
+      "prediction": "Metformin",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_daily_doses.png",
+      "reference": "75 mg daily",
+      "prediction": "75 mg daily",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_routes_of_administration.png",
+      "reference": "Subcutaneous",
+      "prediction": "Subcutaneous",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_indications.png",
+      "reference": "for allergy",
+      "prediction": "for allergy",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_therapy_dates.png",
+      "reference": "16-08-2004 to 27-07-1978",
+      "prediction": "16-08-2004 to 27-07-1978",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_therapy_duration.png",
+      "reference": "23 weeks",
+      "prediction": "23 weeks",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_concomitant_drugs.png",
+      "reference": "Ibuprofen",
+      "prediction": "Ibupron",
+      "exact_match": false,
+      "character_error_rate": 0.2222222222222222,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_history.png",
+      "reference": "lowerback pain",
+      "prediction": "lowerback pain",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_manufacturer_name_address.png",
+      "reference": "Chennai",
+      "prediction": "Chennai",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_mfr_control_no.png",
+      "reference": "122126",
+      "prediction": "122126",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_date_received.png",
+      "reference": "20-03-1963",
+      "prediction": "20-03-1963",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0143_report_date.png",
+      "reference": "18-05-1993",
+      "prediction": "18-05-1993",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_patient_initials.png",
+      "reference": "UZS",
+      "prediction": "UZS",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_country.png",
+      "reference": "India",
+      "prediction": "India",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_date_of_birth_day.png",
+      "reference": "20",
+      "prediction": "20",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_date_of_birth_month.png",
+      "reference": "04",
+      "prediction": "04",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_date_of_birth_year.png",
+      "reference": "2008",
+      "prediction": "2008",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_age.png",
+      "reference": "52",
+      "prediction": "52",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_reaction_onset_day.png",
+      "reference": "18",
+      "prediction": "18",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_reaction_onset_year.png",
+      "reference": "2027",
+      "prediction": "2027",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_reaction_onset_month.png",
+      "reference": "06",
+      "prediction": "06",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_suspect_drugs.png",
+      "reference": "Ibuprofen",
+      "prediction": "Ibuprofen",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_daily_doses.png",
+      "reference": "75 mg daily",
+      "prediction": "75 mg daily",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_routes_of_administration.png",
+      "reference": "Intramuscular",
+      "prediction": "Intramuscular",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_indications.png",
+      "reference": "high blood pressure",
+      "prediction": "high blood pressure",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_therapy_dates.png",
+      "reference": "10-04-1954 to 08-08-1997",
+      "prediction": "10-04-1954 to 08-08-1997",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_therapy_duration.png",
+      "reference": "20 weeks",
+      "prediction": "20 weeks",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_concomitant_drugs.png",
+      "reference": "Cetirizine",
+      "prediction": "Ceime",
+      "exact_match": false,
+      "character_error_rate": 0.6,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_history.png",
+      "reference": "history of hypertension",
+      "prediction": "history of hypertension",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_manufacturer_name_address.png",
+      "reference": "Hyderabad",
+      "prediction": "Hyderabad",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_mfr_control_no.png",
+      "reference": "673726",
+      "prediction": "673726",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_date_received.png",
+      "reference": "2018-12-19",
+      "prediction": "2018-12-19",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0144_report_date.png",
+      "reference": "14/08/2016",
+      "prediction": "14/08/2016",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_patient_initials.png",
+      "reference": "SA",
+      "prediction": "SA",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_country.png",
+      "reference": "Japan",
+      "prediction": "Japan",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_date_of_birth_day.png",
+      "reference": "08",
+      "prediction": "08",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_date_of_birth_month.png",
+      "reference": "05",
+      "prediction": "05",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_date_of_birth_year.png",
+      "reference": "1976",
+      "prediction": "1976",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_age.png",
+      "reference": "72",
+      "prediction": "72",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_sex.png",
+      "reference": "M",
+      "prediction": "M",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_reaction_onset_day.png",
+      "reference": "08",
+      "prediction": "08",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_reaction_onset_year.png",
+      "reference": "2022",
+      "prediction": "2022",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_reaction_onset_month.png",
+      "reference": "01",
+      "prediction": "01",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_suspect_drugs.png",
+      "reference": "Amoxicillin",
+      "prediction": "Amoxicillin",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_daily_doses.png",
+      "reference": "20 mg",
+      "prediction": "20 mg",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_routes_of_administration.png",
+      "reference": "Intramuscular",
+      "prediction": "Intramuscular",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_indications.png",
+      "reference": "high blood pressure",
+      "prediction": "high blood pressure",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_therapy_dates.png",
+      "reference": "1964-04-23 to 26-09-1953",
+      "prediction": "1964-04-23 to 26-09-1953",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_therapy_duration.png",
+      "reference": "24 days",
+      "prediction": "24 days",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_concomitant_drugs.png",
+      "reference": "Crocin",
+      "prediction": "Coin",
+      "exact_match": false,
+      "character_error_rate": 0.3333333333333333,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_history.png",
+      "reference": "lowerback pain",
+      "prediction": "lowerback pain",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_manufacturer_name_address.png",
+      "reference": "Hyderabad",
+      "prediction": "Hyderabad",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_mfr_control_no.png",
+      "reference": "351059",
+      "prediction": "351059",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_date_received.png",
+      "reference": "23/05/2022",
+      "prediction": "23/05/2022",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0145_report_date.png",
+      "reference": "16-03-1982",
+      "prediction": "16-03-1982",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_patient_initials.png",
+      "reference": "OMG",
+      "prediction": "OMG",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_country.png",
+      "reference": "Australia",
+      "prediction": "Australia",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_date_of_birth_day.png",
+      "reference": "17",
+      "prediction": "17",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_date_of_birth_month.png",
+      "reference": "01",
+      "prediction": "01",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_date_of_birth_year.png",
+      "reference": "1983",
+      "prediction": "1983",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_age.png",
+      "reference": "71",
+      "prediction": "71",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_reaction_onset_day.png",
+      "reference": "13",
+      "prediction": "13",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_reaction_onset_year.png",
+      "reference": "2023",
+      "prediction": "2023",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_reaction_onset_month.png",
+      "reference": "12",
+      "prediction": "12",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_suspect_drugs.png",
+      "reference": "Crocin",
+      "prediction": "Crocin",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_daily_doses.png",
+      "reference": "75 mg daily",
+      "prediction": "75 mg daily",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_routes_of_administration.png",
+      "reference": "Intravenous",
+      "prediction": "Intravenous",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_indications.png",
+      "reference": "gastric reflux",
+      "prediction": "astric reflux",
+      "exact_match": false,
+      "character_error_rate": 0.07142857142857142,
+      "word_error_rate": 0.5
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_therapy_dates.png",
+      "reference": "25-10-1950 to 07-06-2004",
+      "prediction": "25-10-1950 to 07-06-2004",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_therapy_duration.png",
+      "reference": "24 months",
+      "prediction": "24 months",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_concomitant_drugs.png",
+      "reference": "Paracetamol",
+      "prediction": "Praraolon",
+      "exact_match": false,
+      "character_error_rate": 0.6363636363636364,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_history.png",
+      "reference": "penicillin allergy",
+      "prediction": "penicillin allergy",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_manufacturer_name_address.png",
+      "reference": "Chennai",
+      "prediction": "Chennai",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_mfr_control_no.png",
+      "reference": "765748",
+      "prediction": "765748",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_date_received.png",
+      "reference": "25-08-2025",
+      "prediction": "25-08-2025",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0146_report_date.png",
+      "reference": "2010-11-02",
+      "prediction": "2010-11-02",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_patient_initials.png",
+      "reference": "UD",
+      "prediction": "UD",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_country.png",
+      "reference": "Singapore",
+      "prediction": "Singapore",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_date_of_birth_day.png",
+      "reference": "17",
+      "prediction": "17",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_date_of_birth_month.png",
+      "reference": "10",
+      "prediction": "10",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_date_of_birth_year.png",
+      "reference": "1972",
+      "prediction": "1972",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_age.png",
+      "reference": "52",
+      "prediction": "52",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_sex.png",
+      "reference": "M",
+      "prediction": "M",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_reaction_onset_day.png",
+      "reference": "25",
+      "prediction": "25",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_reaction_onset_year.png",
+      "reference": "2022",
+      "prediction": "2022",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_reaction_onset_month.png",
+      "reference": "07",
+      "prediction": "07",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_suspect_drugs.png",
+      "reference": "Crocin",
+      "prediction": "Crocin",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_daily_doses.png",
+      "reference": "1",
+      "prediction": "1",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_routes_of_administration.png",
+      "reference": "Topical",
+      "prediction": "Topical",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_indications.png",
+      "reference": "after food",
+      "prediction": "after food",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_therapy_dates.png",
+      "reference": "28/05/1950 to 04/05/2017",
+      "prediction": "28/05/1950 to 04/05/2017",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_therapy_duration.png",
+      "reference": "7 weeks",
+      "prediction": "7 weeks",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_concomitant_drugs.png",
+      "reference": "Metformin",
+      "prediction": "Meririon",
+      "exact_match": false,
+      "character_error_rate": 0.5555555555555556,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_history.png",
+      "reference": "type 2 diabetes",
+      "prediction": "type 2 diabetes",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_manufacturer_name_address.png",
+      "reference": "Pune",
+      "prediction": "Pune",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_mfr_control_no.png",
+      "reference": "354811",
+      "prediction": "354811",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_date_received.png",
+      "reference": "28-06-2018",
+      "prediction": "28-06-2018",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0147_report_date.png",
+      "reference": "16/04/2017",
+      "prediction": "16/04/2017",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_patient_initials.png",
+      "reference": "PH",
+      "prediction": "PH",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_country.png",
+      "reference": "Canada",
+      "prediction": "Canada",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_date_of_birth_day.png",
+      "reference": "28",
+      "prediction": "28",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_date_of_birth_month.png",
+      "reference": "02",
+      "prediction": "02",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_date_of_birth_year.png",
+      "reference": "2010",
+      "prediction": "2010",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_age.png",
+      "reference": "71",
+      "prediction": "71",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_sex.png",
+      "reference": "M",
+      "prediction": "M",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_reaction_onset_day.png",
+      "reference": "10",
+      "prediction": "10",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_reaction_onset_year.png",
+      "reference": "2022",
+      "prediction": "2022",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_reaction_onset_month.png",
+      "reference": "04",
+      "prediction": "04",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_suspect_drugs.png",
+      "reference": "Metformin 5 mg",
+      "prediction": "Metformin 5 mg",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_daily_doses.png",
+      "reference": "20 mg",
+      "prediction": "20 mg",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_routes_of_administration.png",
+      "reference": "Subcutaneous",
+      "prediction": "Subcutaneous",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_indications.png",
+      "reference": "for allergy",
+      "prediction": "for allergy",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_therapy_dates.png",
+      "reference": "21/07/1962 to 24-02-1990",
+      "prediction": "21/07/1962 to 24-02-1990",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_therapy_duration.png",
+      "reference": "16 months",
+      "prediction": "16 months",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_concomitant_drugs.png",
+      "reference": "Paracetamol 20 mg",
+      "prediction": "Paroamle 50 mg",
+      "exact_match": false,
+      "character_error_rate": 0.4117647058823529,
+      "word_error_rate": 0.6666666666666666
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_history.png",
+      "reference": "type 2 diabetes",
+      "prediction": "type 2 diabetes",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_manufacturer_name_address.png",
+      "reference": "Bengaluru",
+      "prediction": "Bengaluru",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_mfr_control_no.png",
+      "reference": "670634",
+      "prediction": "670634",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_date_received.png",
+      "reference": "1951-09-21",
+      "prediction": "1951-09-21",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0148_report_date.png",
+      "reference": "07-09-1955",
+      "prediction": "07-09-1955",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_patient_initials.png",
+      "reference": "ONM",
+      "prediction": "OhM",
+      "exact_match": false,
+      "character_error_rate": 0.3333333333333333,
+      "word_error_rate": 1.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_country.png",
+      "reference": "India",
+      "prediction": "India",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_date_of_birth_day.png",
+      "reference": "01",
+      "prediction": "01",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_date_of_birth_month.png",
+      "reference": "08",
+      "prediction": "08",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_date_of_birth_year.png",
+      "reference": "1954",
+      "prediction": "1954",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_age.png",
+      "reference": "63",
+      "prediction": "63",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_sex.png",
+      "reference": "F",
+      "prediction": "F",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_reaction_onset_day.png",
+      "reference": "12",
+      "prediction": "12",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_reaction_onset_year.png",
+      "reference": "2026",
+      "prediction": "2026",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_reaction_onset_month.png",
+      "reference": "12",
+      "prediction": "12",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_suspect_drugs.png",
+      "reference": "Paracetamol",
+      "prediction": "Paracetamol",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_daily_doses.png",
+      "reference": "5 ml",
+      "prediction": "5 ml",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_routes_of_administration.png",
+      "reference": "Intramuscular",
+      "prediction": "Intramuscular",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_indications.png",
+      "reference": "for infection",
+      "prediction": "for infection",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_therapy_dates.png",
+      "reference": "02-04-1986 to 2024-10-26",
+      "prediction": "02-04-1986 to 2024-10-26",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_therapy_duration.png",
+      "reference": "4 days",
+      "prediction": "4 days",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_concomitant_drugs.png",
+      "reference": "Metformin 5 mg",
+      "prediction": "Peroin 0 mg",
+      "exact_match": false,
+      "character_error_rate": 0.42857142857142855,
+      "word_error_rate": 0.6666666666666666
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_history.png",
+      "reference": "penicillin allergy",
+      "prediction": "penicillin allergy",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_manufacturer_name_address.png",
+      "reference": "Hyderabad",
+      "prediction": "Hyderabad",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_mfr_control_no.png",
+      "reference": "721905",
+      "prediction": "721905",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_date_received.png",
+      "reference": "1981-11-18",
+      "prediction": "1981-11-18",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    },
+    {
+      "image_path": "data\\ml_training\\cioms_rendered\\images\\test_form_0149_report_date.png",
+      "reference": "09-06-2008",
+      "prediction": "09-06-2008",
+      "exact_match": true,
+      "character_error_rate": 0.0,
+      "word_error_rate": 0.0
+    }
+  ]
+}

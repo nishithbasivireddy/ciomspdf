@@ -18,3 +18,5 @@ patch_upload_rerun.py
 *.log
 .DS_Store
 .vscode/
+data/ml_training/
+outputs/custom_ml_debug/

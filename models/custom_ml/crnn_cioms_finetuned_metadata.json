@@ -1,0 +1,29 @@
+{
+  "model_type": "CIOMS-domain fine-tuned CNN plus bidirectional LSTM text recognizer trained with CTC loss",
+  "task": "Single-line CIOMS rendered field-crop transcription",
+  "input_shape": [
+    1,
+    32,
+    512
+  ],
+  "number_of_classes": 80,
+  "blank_index": 0,
+  "hidden_size": 128,
+  "total_parameters": 5576400,
+  "trainable_parameters": 5576400,
+  "seed": 20260820,
+  "device_used_for_training": "cpu",
+  "requested_epochs": 8,
+  "completed_epochs": 8,
+  "best_epoch": 8,
+  "best_validation_character_error_rate": 0.020858617503354344,
+  "train_samples": 2640,
+  "validation_samples": 330,
+  "test_samples": 330,
+  "test_exact_match_accuracy": 0.9363636363636364,
+  "test_mean_character_error_rate": 0.02382403809718755,
+  "test_mean_word_error_rate": 0.051010101010101006,
+  "model_path": "models/custom_ml/crnn_cioms_finetuned.pt",
+  "integrity_statement": "The model was fine-tuned from the verified generic CRNN using synthetic CIOMS-rendered crop images. The protected real evaluation PDF, Plain Python, OCR, and LLM outputs were excluded from training.",
+  "known_limitation": "The trained recognizer handles single-line text crops. Multiline CIOMS regions require line segmentation before recognition."
+}

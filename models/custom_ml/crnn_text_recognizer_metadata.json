@@ -1,0 +1,29 @@
+{
+  "model_type": "Custom CNN plus bidirectional LSTM text recognizer trained with CTC loss",
+  "task": "Single-line image crop transcription",
+  "input_shape": [
+    1,
+    32,
+    512
+  ],
+  "number_of_classes": 80,
+  "blank_index": 0,
+  "hidden_size": 128,
+  "total_parameters": 5576400,
+  "trainable_parameters": 5576400,
+  "seed": 20260820,
+  "device_used_for_training": "cpu",
+  "requested_epochs": 15,
+  "completed_epochs": 15,
+  "best_epoch": 13,
+  "best_validation_character_error_rate": 0.028417022515527954,
+  "train_samples": 1920,
+  "validation_samples": 240,
+  "test_samples": 240,
+  "test_exact_match_accuracy": 0.8166666666666667,
+  "test_mean_character_error_rate": 0.04961528086528085,
+  "test_mean_word_error_rate": 0.11145833333333334,
+  "model_path": "models/custom_ml/crnn_text_recognizer.pt",
+  "integrity_statement": "The model is trained from labelled crop images. It does not consume Plain Python, OCR, LLM, or uploaded-form reference values.",
+  "known_limitation": "The trained recognizer handles single-line text crops. Multiline CIOMS regions require line segmentation before recognition."
+}

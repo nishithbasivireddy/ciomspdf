@@ -1,120 +1,87 @@
-﻿from pathlib import Path
+from __future__ import annotations
 
-import joblib
-import pymupdf as fitz
+import json
+from pathlib import Path
 
-from src.field_schema import ALL_FIELDS, CHECKBOX_SCHEMA
+from src.field_schema import ALL_FIELDS
+from src.ml.checkbox.real_pdf_inference import main as run_checkbox_inference
+from src.ml.crnn.real_pdf_inference import run_real_pdf_inference
 from src.utils.json_utils import save_json
-from src.ml.train_field_classifier import train_and_save_model
 
 
-MODEL_PATH = "models/field_classifier.joblib"
+TEXT_RESULT_PATH = Path(
+    "outputs/json/real_cioms_custom_ml_text_test.json"
+)
 
-
-def load_or_train_model():
-    if not Path(MODEL_PATH).exists():
-        train_and_save_model()
-
-    return joblib.load(MODEL_PATH)
-
-
-def normalize_checkbox_value(value):
-    value = str(value).strip().lower()
-
-    if value == "yes":
-        return "Yes"
-
-    return "Off"
-
-
-def extract_pdf_candidates(pdf_path):
-    doc = fitz.open(pdf_path)
-    page = doc[0]
-
-    candidates = []
-
-    for widget in page.widgets() or []:
-        field_name = widget.field_name
-        field_value = widget.field_value
-
-        if field_value is None:
-            field_value = ""
-
-        field_value = str(field_value).strip()
-
-        if field_value == "":
-            continue
-
-        candidate_text = f"{field_name} {field_value}"
-
-        candidates.append(
-            {
-                "pdf_field_name": field_name,
-                "value": field_value,
-                "candidate_text": candidate_text
-            }
-        )
-
-    doc.close()
-
-    return candidates
+CHECKBOX_RESULT_PATH = Path(
+    "outputs/json/real_cioms_checkbox_ml_test.json"
+)
 
 
 def extract_custom_ml(
-    pdf_path="data/filled_form.pdf",
-    output_path="outputs/json/extracted_custom_ml.json"
-):
-    if not Path(pdf_path).exists():
-        extracted = {field: "" for field in ALL_FIELDS}
-        extracted["custom_ml_status"] = "Failed: uploaded PDF not found"
-        save_json(extracted, output_path)
-        return extracted
+    pdf_path: str = "data/filled_form.pdf",
+    output_path: str = "outputs/json/extracted_custom_ml.json",
+) -> dict[str, str]:
+    pdf_file = Path(pdf_path)
 
-    model = load_or_train_model()
-    candidates = extract_pdf_candidates(pdf_path)
+    if not pdf_file.is_file():
+        result = {
+            field: ""
+            for field in ALL_FIELDS
+        }
 
-    extracted = {}
+        result["custom_ml_status"] = (
+            "Failed: uploaded PDF not found"
+        )
 
-    for field in ALL_FIELDS:
-        if field in CHECKBOX_SCHEMA:
-            extracted[field] = "Off"
-        else:
-            extracted[field] = ""
+        save_json(result, output_path)
+        return result
 
-    confidence_tracker = {}
+    text_payload = run_real_pdf_inference(
+        pdf_path=pdf_file,
+        output_path=TEXT_RESULT_PATH,
+    )
 
-    for item in candidates:
-        candidate_text = item["candidate_text"]
-        raw_value = item["value"]
+    run_checkbox_inference()
 
-        predicted_field = model.predict([candidate_text])[0]
+    checkbox_payload = json.loads(
+        CHECKBOX_RESULT_PATH.read_text(
+            encoding="utf-8"
+        )
+    )
 
-        confidence = 1.0
+    result = {
+        field: ""
+        for field in ALL_FIELDS
+    }
 
-        try:
-            probabilities = model.predict_proba([candidate_text])[0]
-            confidence = max(probabilities)
-        except Exception:
-            confidence = 1.0
+    for field, value in text_payload[
+        "extracted_values"
+    ].items():
+        if field in result:
+            result[field] = value
 
-        current_confidence = confidence_tracker.get(predicted_field, -1)
+    for field, value in checkbox_payload[
+        "extracted_values"
+    ].items():
+        if field in result:
+            result[field] = value
 
-        if confidence >= current_confidence:
-            if predicted_field in CHECKBOX_SCHEMA:
-                extracted[predicted_field] = normalize_checkbox_value(raw_value)
-            else:
-                extracted[predicted_field] = raw_value
+    result["custom_ml_status"] = (
+        "Success: custom fine-tuned CRNN and "
+        "custom checkbox CNN processed rendered "
+        "PDF pixels"
+    )
 
-            confidence_tracker[predicted_field] = confidence
-
-    extracted["custom_ml_status"] = "Success: trained TF-IDF + Logistic Regression classifier used"
-
-    save_json(extracted, output_path)
-
-    return extracted
+    save_json(result, output_path)
+    return result
 
 
 if __name__ == "__main__":
-    result = extract_custom_ml()
-    print("Custom ML extraction completed.")
-    print(result)
+    extracted = extract_custom_ml()
+
+    print("CUSTOM ML EXTRACTION COMPLETED")
+    print("------------------------------")
+
+    for field, value in extracted.items():
+        print(f"{field}: {value}")

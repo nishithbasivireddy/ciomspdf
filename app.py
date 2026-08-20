@@ -1,4 +1,4 @@
-﻿import io
+import io
 import hashlib
 from pathlib import Path
 
@@ -81,7 +81,8 @@ def run_with_progress(label, function_call):
 def run_plain_python():
     return extract_plain_python(
         pdf_path="data/filled_form.pdf",
-        output_path="outputs/json/extracted_plain_python.json"
+        output_path="outputs/json/extracted_plain_python.json",
+        validation_path="outputs/json/plain_python_reference_validation.json",
     )
 
 
@@ -374,38 +375,68 @@ with compare_tab:
         if not Path("data/filled_form.pdf").exists():
             st.error("Please upload the filled PDF form first.")
         else:
-            run_with_progress(
-                "Python Reference extraction",
-                run_plain_python
-            )
+            comparison_ready = False
 
-            run_with_progress(
-                "OCR + Python extraction",
-                run_ocr_python
-            )
+            try:
+                run_with_progress(
+                    "Python Reference extraction",
+                    run_plain_python
+                )
 
-            run_with_progress(
-                "Custom ML + Python extraction",
-                run_custom_ml
-            )
+                validation = load_json(
+                    "outputs/json/plain_python_reference_validation.json"
+                )
 
-            run_with_progress(
-                "LLM + Python extraction",
-                run_llm
-            )
+                if not validation.get("reference_valid", False):
+                    st.error(
+                        "Comparison stopped because the Python widget "
+                        "reference baseline is invalid."
+                    )
+                    st.json(validation)
+                else:
+                    comparison_ready = True
 
-            run_with_progress(
-                "Quality comparison",
-                compare_all_outputs
-            )
+            except Exception as error:
+                st.error(
+                    "Comparison stopped because a valid Python widget "
+                    f"reference could not be created: {error}"
+                )
 
-            field_df = build_field_level_dataframe()
-            confusion_df = build_confusion_dataframe()
+            if comparison_ready:
+                run_with_progress(
+                    "OCR + Python extraction",
+                    run_ocr_python
+                )
 
-            field_df.to_csv("outputs/reports/field_level_report.csv", index=False)
-            confusion_df.to_csv("outputs/reports/confusion_summary.csv", index=False)
+                run_with_progress(
+                    "Custom ML + Python extraction",
+                    run_custom_ml
+                )
 
-            st.success("Comparison results are ready below.")
+                run_with_progress(
+                    "LLM + Python extraction",
+                    run_llm
+                )
+
+                run_with_progress(
+                    "Quality comparison",
+                    compare_all_outputs
+                )
+
+                field_df = build_field_level_dataframe()
+                confusion_df = build_confusion_dataframe()
+
+                field_df.to_csv(
+                    "outputs/reports/field_level_report.csv",
+                    index=False
+                )
+
+                confusion_df.to_csv(
+                    "outputs/reports/confusion_summary.csv",
+                    index=False
+                )
+
+                st.success("Comparison results are ready below.")
 
     if Path("outputs/reports/comparison_report.csv").exists():
         summary_df = pd.read_csv("outputs/reports/comparison_report.csv")
