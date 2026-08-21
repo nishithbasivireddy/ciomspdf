@@ -30,14 +30,6 @@ st.set_page_config(
 
 st.title("PDF Form Extraction Quality Comparison")
 
-st.warning(
-    "Demo app for synthetic/sample PDFs only. Do not upload confidential, personal, medical, client, or production data."
-)
-
-st.write(
-    "Upload a filled PDF form, run extraction using different approaches, compare outputs, and export the quality report."
-)
-
 Path("data").mkdir(parents=True, exist_ok=True)
 Path("outputs/json").mkdir(parents=True, exist_ok=True)
 Path("outputs/reports").mkdir(parents=True, exist_ok=True)
@@ -1348,253 +1340,141 @@ with approach_columns[3]:
 
 st.divider()
 
-st.header("Upload and Preview CIOMS PDF")
+st.header("Filled CIOMS PDF Preview")
 
-uploaded_pdf = st.file_uploader(
-    "Upload filled CIOMS PDF",
-    type=["pdf"],
-    key="single_page_pdf_upload",
+demo_pdf_path = Path(
+    "demo/cioms-form2.pdf"
 )
 
-if uploaded_pdf is not None:
-    uploaded_bytes = uploaded_pdf.getvalue()
-    uploaded_hash = hashlib.md5(
-        uploaded_bytes
-    ).hexdigest()
+demo_expected_path = Path(
+    "demo/cioms_manual_expected_values.json"
+)
 
-    if (
-        st.session_state.get(
-            "uploaded_pdf_hash"
-        )
-        != uploaded_hash
+runtime_pdf_path = Path(
+    "data/filled_form.pdf"
+)
+
+if not demo_pdf_path.is_file():
+    st.error(
+        "Bundled demo PDF is missing: "
+        f"{demo_pdf_path}"
+    )
+
+    st.stop()
+
+if not demo_expected_path.is_file():
+    st.error(
+        "Bundled Expected JSON is missing: "
+        f"{demo_expected_path}"
+    )
+
+    st.stop()
+
+demo_pdf_bytes = demo_pdf_path.read_bytes()
+
+runtime_pdf_path.parent.mkdir(
+    parents=True,
+    exist_ok=True,
+)
+
+runtime_pdf_path.write_bytes(
+    demo_pdf_bytes
+)
+
+demo_expected_values = load_json(
+    demo_expected_path
+)
+
+expected_validation = (
+    validate_expected_values(
+        demo_expected_values
+    )
+)
+
+if any(
+    expected_validation.values()
+):
+    st.error(
+        "The bundled Expected JSON does not "
+        "match the required 38-field schema."
+    )
+
+    st.json(
+        expected_validation
+    )
+
+    st.stop()
+
+st.session_state[
+    "expected_values"
+] = normalize_expected_values(
+    demo_expected_values
+)
+
+st.session_state[
+    "expected_source"
+] = "Bundled Verified Expected JSON"
+
+try:
+    preview_document = fitz.open(
+        stream=demo_pdf_bytes,
+        filetype="pdf",
+    )
+
+    for page_number in range(
+        preview_document.page_count
     ):
-        Path(
-            "data/filled_form.pdf"
-        ).write_bytes(uploaded_bytes)
+        preview_page = preview_document[
+            page_number
+        ]
 
-        clear_previous_outputs()
-
-        st.session_state[
-            "uploaded_pdf_hash"
-        ] = uploaded_hash
-
-        st.session_state[
-            "expected_values"
-        ] = blank_expected_values()
-
-        st.session_state[
-            "expected_source"
-        ] = "Not provided"
-
-        st.session_state[
-            "comparison_completed"
-        ] = False
-
-    try:
-        preview_document = fitz.open(
-            stream=uploaded_bytes,
-            filetype="pdf",
-        )
-
-        st.caption(
-            f"PDF preview: "
-            f"{preview_document.page_count} "
-            f"page(s)"
-        )
-
-        for page_number in range(
-            preview_document.page_count
-        ):
-            preview_page = preview_document[
-                page_number
-            ]
-
-            preview_pixmap = (
-                preview_page.get_pixmap(
-                    matrix=fitz.Matrix(
-                        1.5,
-                        1.5,
-                    ),
-                    alpha=False,
-                    annots=True,
-                )
-            )
-
-            preview_png = (
-                preview_pixmap.tobytes(
-                    "png"
-                )
-            )
-
-            st.image(
-                preview_png,
-                caption=(
-                    f"CIOMS PDF - Page "
-                    f"{page_number + 1}"
+        preview_pixmap = (
+            preview_page.get_pixmap(
+                matrix=fitz.Matrix(
+                    1.5,
+                    1.5,
                 ),
-                width="stretch",
+                alpha=False,
+                annots=True,
             )
-
-        preview_document.close()
-
-        st.success(
-            "Filled CIOMS PDF uploaded and "
-            "previewed successfully."
         )
 
-    except Exception as preview_error:
-        st.error(
-            "The PDF was uploaded, but the "
-            "preview could not be rendered: "
-            f"{preview_error}"
+        preview_png = (
+            preview_pixmap.tobytes(
+                "png"
+            )
         )
-else:
-    st.info(
-        "Upload a filled CIOMS PDF to preview it."
+
+        st.image(
+            preview_png,
+            caption=(
+                f"Filled CIOMS PDF - Page "
+                f"{page_number + 1}"
+            ),
+            width="stretch",
+        )
+
+    preview_document.close()
+
+except Exception as preview_error:
+    st.error(
+        "The bundled PDF could not be "
+        "previewed: "
+        f"{preview_error}"
     )
 
-st.subheader("Expected Values")
+    st.stop()
 
-st.caption(
-    "Upload the verified Expected Values used "
-    "only for evaluation. Checkbox values must "
-    'be "Yes" or "Off".'
-)
-
-template_json = json.dumps(
-    blank_expected_values(),
-    indent=2,
-)
-
-st.download_button(
-    "Download Expected JSON Template",
-    data=template_json,
-    file_name="cioms_expected_values_template.json",
-    mime="application/json",
-)
-
-uploaded_expected_json = st.file_uploader(
-    "Upload verified Expected JSON",
-    type=["json"],
-    key="single_page_expected_json",
-)
-
-if uploaded_expected_json is not None:
-    try:
-        uploaded_expected = json.loads(
-            uploaded_expected_json
-            .getvalue()
-            .decode("utf-8-sig")
-        )
-
-        if not isinstance(
-            uploaded_expected,
-            dict,
-        ):
-            raise ValueError(
-                "The JSON root must be an object."
-            )
-
-        validation = validate_expected_values(
-            uploaded_expected
-        )
-
-        if any(validation.values()):
-            if validation["missing_keys"]:
-                st.error(
-                    "Missing keys: "
-                    + ", ".join(
-                        validation["missing_keys"]
-                    )
-                )
-
-            if validation["unexpected_keys"]:
-                st.error(
-                    "Unexpected keys: "
-                    + ", ".join(
-                        validation["unexpected_keys"]
-                    )
-                )
-
-            if validation[
-                "invalid_checkboxes"
-            ]:
-                st.error(
-                    "Checkbox values must be Yes "
-                    "or Off: "
-                    + ", ".join(
-                        validation[
-                            "invalid_checkboxes"
-                        ]
-                    )
-                )
-        else:
-            st.session_state[
-                "expected_values"
-            ] = normalize_expected_values(
-                uploaded_expected
-            )
-
-            st.session_state[
-                "expected_source"
-            ] = "Verified JSON Upload"
-
-            st.session_state[
-                "comparison_completed"
-            ] = False
-
-            st.success(
-                "Verified Expected Values loaded."
-            )
-
-    except (
-        UnicodeDecodeError,
-        json.JSONDecodeError,
-        ValueError,
-    ) as error:
-        st.error(
-            f"Expected JSON is invalid: {error}"
-        )
-
-pdf_ready = (
-    bool(
-        st.session_state.get(
-            "uploaded_pdf_hash"
-        )
-    )
-    and Path(
-        "data/filled_form.pdf"
-    ).is_file()
-)
-
-expected_ready = (
-    st.session_state.get(
-        "expected_source"
-    )
-    != "Not provided"
-)
-
-extract_ready = (
-    pdf_ready
-    and expected_ready
-)
+pdf_ready = True
+expected_ready = True
+extract_ready = True
 
 st.divider()
 
 st.header("Extract and Compare")
 
-if not pdf_ready:
-    st.warning(
-        "Upload the filled CIOMS PDF first."
-    )
-
-if not expected_ready:
-    st.warning(
-        "Upload the verified Expected JSON first."
-    )
-
 run_extraction = st.button(
-    "Extract All Approaches",
+    "Run",
     type="primary",
     disabled=not extract_ready,
     use_container_width=True,
