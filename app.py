@@ -1,10 +1,13 @@
 import io
 import json
+import base64
 import hashlib
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+import pymupdf as fitz
+import streamlit.components.v1 as st_components
 
 from src.field_schema import ALL_FIELDS, CHECKBOX_SCHEMA, FIELD_SCHEMA
 from src.components.cioms_expected_form.component import (
@@ -50,6 +53,9 @@ if "expected_source" not in st.session_state:
     st.session_state["expected_source"] = (
         "Not provided"
     )
+
+if "comparison_completed" not in st.session_state:
+    st.session_state["comparison_completed"] = False
 
 
 
@@ -1304,347 +1310,298 @@ def create_pdf_bytes(
 
 
 
-compare_tab, upload_tab, extract_tab = st.tabs(
-    [
-        "1. Compare & Export",
-        "2. Upload PDF & Expected Values",
-        "3. Individual Extraction (Optional)",
-    ]
+st.header("Implemented Extraction Approaches")
+
+approach_columns = st.columns(4)
+
+with approach_columns[0]:
+    st.markdown("#### Plain Python")
+    st.write(
+        "Reads embedded PDF form-widget values "
+        "using PyMuPDF and maps them into the "
+        "38-field CIOMS schema."
+    )
+
+with approach_columns[1]:
+    st.markdown("#### OCR + Python")
+    st.write(
+        "Renders the PDF visually, applies OCR, "
+        "and maps recognized content into the "
+        "38-field CIOMS schema."
+    )
+
+with approach_columns[2]:
+    st.markdown("#### Custom ML + Python")
+    st.write(
+        "Uses a fine-tuned CRNN for text fields "
+        "and a custom CNN for checkbox fields "
+        "from rendered PDF pixels."
+    )
+
+with approach_columns[3]:
+    st.markdown("#### LLM + Python")
+    st.write(
+        "Uses an LLM to map Python-extracted PDF "
+        "form-field values into the required "
+        "38-field JSON schema."
+    )
+
+st.divider()
+
+st.header("Upload and Preview CIOMS PDF")
+
+uploaded_pdf = st.file_uploader(
+    "Upload filled CIOMS PDF",
+    type=["pdf"],
+    key="single_page_pdf_upload",
 )
 
+if uploaded_pdf is not None:
+    uploaded_bytes = uploaded_pdf.getvalue()
+    uploaded_hash = hashlib.md5(
+        uploaded_bytes
+    ).hexdigest()
 
-with upload_tab:
-    st.header("Upload PDF and Expected Values")
+    if (
+        st.session_state.get(
+            "uploaded_pdf_hash"
+        )
+        != uploaded_hash
+    ):
+        Path(
+            "data/filled_form.pdf"
+        ).write_bytes(uploaded_bytes)
 
-    st.info(
-        "Expected values are used only for evaluation. "
-        "They are never supplied to Python, OCR, "
-        "Custom ML, or LLM extraction."
-    )
+        clear_previous_outputs()
 
-    (
-        pdf_upload_tab,
-        expected_json_tab,
-        expected_manual_tab,
-    ) = st.tabs(
-        [
-            "Upload Filled PDF",
-            "Upload Expected JSON",
-            "Enter Expected Values in CIOMS Form",
-        ]
-    )
+        st.session_state[
+            "uploaded_pdf_hash"
+        ] = uploaded_hash
 
-    with pdf_upload_tab:
-        st.subheader("Upload Filled CIOMS PDF")
+        st.session_state[
+            "expected_values"
+        ] = blank_expected_values()
 
-        uploaded_pdf = st.file_uploader(
-            "Upload filled CIOMS PDF",
-            type=["pdf"],
-            key="filled_pdf_upload",
+        st.session_state[
+            "expected_source"
+        ] = "Not provided"
+
+        st.session_state[
+            "comparison_completed"
+        ] = False
+
+    try:
+        preview_document = fitz.open(
+            stream=uploaded_bytes,
+            filetype="pdf",
         )
 
-        if uploaded_pdf is not None:
-            uploaded_bytes = uploaded_pdf.getvalue()
-            uploaded_hash = hashlib.md5(
-                uploaded_bytes
-            ).hexdigest()
-
-            if (
-                st.session_state.get(
-                    "uploaded_pdf_hash"
-                )
-                != uploaded_hash
-            ):
-                Path(
-                    "data/filled_form.pdf"
-                ).write_bytes(uploaded_bytes)
-
-                clear_previous_outputs()
-
-                st.session_state[
-                    "uploaded_pdf_hash"
-                ] = uploaded_hash
-
-                st.session_state[
-                    "expected_values"
-                ] = blank_expected_values()
-
-                st.session_state[
-                    "expected_source"
-                ] = "Not provided"
-
-                st.success(
-                    "PDF uploaded successfully. "
-                    "Previous extraction outputs and "
-                    "Expected values were cleared."
-                )
-            else:
-                st.info(
-                    "The same uploaded PDF is already "
-                    "loaded."
-                )
-
-        current_session_pdf_ready = (
-            bool(
-                st.session_state.get(
-                    "uploaded_pdf_hash"
-                )
-            )
-            and Path(
-                "data/filled_form.pdf"
-            ).is_file()
+        st.caption(
+            f"PDF preview: "
+            f"{preview_document.page_count} "
+            f"page(s)"
         )
 
-        if current_session_pdf_ready:
-            st.success(
-                "Filled CIOMS PDF is ready for "
-                "extraction."
-            )
+        for page_number in range(
+            preview_document.page_count
+        ):
+            preview_page = preview_document[
+                page_number
+            ]
 
-            with open(
-                "data/filled_form.pdf",
-                "rb",
-            ) as file:
-                st.download_button(
-                    "Download Uploaded PDF",
-                    file,
-                    file_name=(
-                        "uploaded_filled_form.pdf"
+            preview_pixmap = (
+                preview_page.get_pixmap(
+                    matrix=fitz.Matrix(
+                        1.5,
+                        1.5,
                     ),
-                    mime="application/pdf",
+                    alpha=False,
+                    annots=True,
                 )
-
-
-        else:
-            st.warning(
-                "No filled CIOMS PDF has been "
-                "uploaded."
             )
 
-    with expected_json_tab:
-        st.subheader(
-            "Upload Verified Expected JSON"
-        )
-
-        st.caption(
-            "The JSON must contain exactly the same "
-            "38 keys defined by the CIOMS schema. "
-            "Checkbox values must be Yes or Off."
-        )
-
-        template_json = json.dumps(
-            blank_expected_values(),
-            indent=2,
-        )
-
-        st.download_button(
-            "Download Expected JSON Template",
-            data=template_json,
-            file_name=(
-                "cioms_expected_values_template.json"
-            ),
-            mime="application/json",
-        )
-
-        uploaded_expected_json = st.file_uploader(
-            "Upload expected-values JSON",
-            type=["json"],
-            key="expected_json_upload",
-        )
-
-        if uploaded_expected_json is not None:
-            try:
-                uploaded_expected = json.loads(
-                    uploaded_expected_json
-                    .getvalue()
-                    .decode("utf-8-sig")
+            preview_png = (
+                preview_pixmap.tobytes(
+                    "png"
                 )
-
-                if not isinstance(
-                    uploaded_expected,
-                    dict,
-                ):
-                    raise ValueError(
-                        "The JSON root must be an "
-                        "object."
-                    )
-
-                validation = (
-                    validate_expected_values(
-                        uploaded_expected
-                    )
-                )
-
-                has_errors = any(
-                    validation.values()
-                )
-
-                if has_errors:
-                    if validation[
-                        "missing_keys"
-                    ]:
-                        st.error(
-                            "Missing keys: "
-                            + ", ".join(
-                                validation[
-                                    "missing_keys"
-                                ]
-                            )
-                        )
-
-                    if validation[
-                        "unexpected_keys"
-                    ]:
-                        st.error(
-                            "Unexpected keys: "
-                            + ", ".join(
-                                validation[
-                                    "unexpected_keys"
-                                ]
-                            )
-                        )
-
-                    if validation[
-                        "invalid_checkboxes"
-                    ]:
-                        st.error(
-                            "Checkbox values must be "
-                            "Yes or Off: "
-                            + ", ".join(
-                                validation[
-                                    "invalid_checkboxes"
-                                ]
-                            )
-                        )
-                else:
-                    expected_from_json = (
-                        normalize_expected_values(
-                            uploaded_expected
-                        )
-                    )
-
-                    if st.button(
-                        "Use Uploaded Expected JSON",
-                        key=(
-                            "use_uploaded_expected_json"
-                        ),
-                        type="primary",
-                    ):
-                        st.session_state[
-                            "expected_values"
-                        ] = expected_from_json
-
-                        st.session_state[
-                            "expected_source"
-                        ] = (
-                            "Verified JSON Upload"
-                        )
-
-                        st.success(
-                            "Expected values loaded "
-                            "from the verified JSON."
-                        )
-
-            except (
-                UnicodeDecodeError,
-                json.JSONDecodeError,
-                ValueError,
-            ) as error:
-                st.error(
-                    "Expected JSON is invalid: "
-                    f"{error}"
-                )
-
-    with expected_manual_tab:
-        st.subheader(
-            "Manual Expected Values: CIOMS Form"
-        )
-
-        st.caption(
-            "Enter values directly in their original "
-            "CIOMS positions. Checkbox groups follow "
-            "the form layout. The values are retained "
-            "only in the current Streamlit session."
-        )
-
-        manual_values = (
-            render_cioms_expected_form(
-                initial_values=st.session_state[
-                    "expected_values"
-                ],
-                key="manual_cioms_expected_form",
             )
-        )
 
-        manual_left, manual_middle, manual_right = (
-            st.columns([1, 1, 1])
-        )
-
-        with manual_left:
-            if st.button(
-                "Save Manual Expected Values",
-                key="save_manual_expected_values",
-                type="primary",
-                use_container_width=True,
-            ):
-                st.session_state[
-                    "expected_values"
-                ] = normalize_expected_values(
-                    manual_values
-                )
-
-                st.session_state[
-                    "expected_source"
-                ] = (
-                    "Manual CIOMS Form Entry"
-                )
-
-                st.success(
-                    "Manual Expected values saved."
-                )
-
-        with manual_middle:
-            if st.button(
-                "Reset Manual Expected Values",
-                key="reset_manual_expected_values",
-                use_container_width=True,
-            ):
-                st.session_state[
-                    "expected_values"
-                ] = blank_expected_values()
-
-                st.session_state[
-                    "expected_source"
-                ] = "Not provided"
-
-                st.rerun()
-
-        with manual_right:
-            manual_download = json.dumps(
-                normalize_expected_values(
-                    manual_values
+            st.image(
+                preview_png,
+                caption=(
+                    f"CIOMS PDF - Page "
+                    f"{page_number + 1}"
                 ),
-                indent=2,
+                width="stretch",
             )
 
-            st.download_button(
-                "Download Manual Values as JSON",
-                data=manual_download,
-                file_name=(
-                    "cioms_manual_expected_values.json"
-                ),
-                mime="application/json",
-                use_container_width=True,
-            )
+        preview_document.close()
 
-    st.divider()
+        st.success(
+            "Filled CIOMS PDF uploaded and "
+            "previewed successfully."
+        )
 
-    st.write(
-        "**Expected Values Source:** "
-        f"{st.session_state['expected_source']}"
+    except Exception as preview_error:
+        st.error(
+            "The PDF was uploaded, but the "
+            "preview could not be rendered: "
+            f"{preview_error}"
+        )
+else:
+    st.info(
+        "Upload a filled CIOMS PDF to preview it."
     )
 
-    normalized_expected = (
+st.subheader("Expected Values")
+
+st.caption(
+    "Upload the verified Expected Values used "
+    "only for evaluation. Checkbox values must "
+    'be "Yes" or "Off".'
+)
+
+template_json = json.dumps(
+    blank_expected_values(),
+    indent=2,
+)
+
+st.download_button(
+    "Download Expected JSON Template",
+    data=template_json,
+    file_name="cioms_expected_values_template.json",
+    mime="application/json",
+)
+
+uploaded_expected_json = st.file_uploader(
+    "Upload verified Expected JSON",
+    type=["json"],
+    key="single_page_expected_json",
+)
+
+if uploaded_expected_json is not None:
+    try:
+        uploaded_expected = json.loads(
+            uploaded_expected_json
+            .getvalue()
+            .decode("utf-8-sig")
+        )
+
+        if not isinstance(
+            uploaded_expected,
+            dict,
+        ):
+            raise ValueError(
+                "The JSON root must be an object."
+            )
+
+        validation = validate_expected_values(
+            uploaded_expected
+        )
+
+        if any(validation.values()):
+            if validation["missing_keys"]:
+                st.error(
+                    "Missing keys: "
+                    + ", ".join(
+                        validation["missing_keys"]
+                    )
+                )
+
+            if validation["unexpected_keys"]:
+                st.error(
+                    "Unexpected keys: "
+                    + ", ".join(
+                        validation["unexpected_keys"]
+                    )
+                )
+
+            if validation[
+                "invalid_checkboxes"
+            ]:
+                st.error(
+                    "Checkbox values must be Yes "
+                    "or Off: "
+                    + ", ".join(
+                        validation[
+                            "invalid_checkboxes"
+                        ]
+                    )
+                )
+        else:
+            st.session_state[
+                "expected_values"
+            ] = normalize_expected_values(
+                uploaded_expected
+            )
+
+            st.session_state[
+                "expected_source"
+            ] = "Verified JSON Upload"
+
+            st.session_state[
+                "comparison_completed"
+            ] = False
+
+            st.success(
+                "Verified Expected Values loaded."
+            )
+
+    except (
+        UnicodeDecodeError,
+        json.JSONDecodeError,
+        ValueError,
+    ) as error:
+        st.error(
+            f"Expected JSON is invalid: {error}"
+        )
+
+pdf_ready = (
+    bool(
+        st.session_state.get(
+            "uploaded_pdf_hash"
+        )
+    )
+    and Path(
+        "data/filled_form.pdf"
+    ).is_file()
+)
+
+expected_ready = (
+    st.session_state.get(
+        "expected_source"
+    )
+    != "Not provided"
+)
+
+extract_ready = (
+    pdf_ready
+    and expected_ready
+)
+
+st.divider()
+
+st.header("Extract and Compare")
+
+if not pdf_ready:
+    st.warning(
+        "Upload the filled CIOMS PDF first."
+    )
+
+if not expected_ready:
+    st.warning(
+        "Upload the verified Expected JSON first."
+    )
+
+run_extraction = st.button(
+    "Extract All Approaches",
+    type="primary",
+    disabled=not extract_ready,
+    use_container_width=True,
+)
+
+if run_extraction:
+    active_expected = (
         normalize_expected_values(
             st.session_state[
                 "expected_values"
@@ -1652,472 +1609,499 @@ with upload_tab:
         )
     )
 
-    populated_text_count = sum(
-        bool(str(normalized_expected[field]).strip())
-        for field in ALL_FIELDS
-        if field not in CHECKBOX_SCHEMA
+    save_json(
+        active_expected,
+        "outputs/json/expected_values.json",
     )
 
-    checked_count = sum(
-        normalized_expected[field] == "Yes"
-        for field in CHECKBOX_SCHEMA
-    )
-
-    st.caption(
-        f"{populated_text_count} text fields populated; "
-        f"{checked_count} checkboxes selected."
-    )
-
-    with st.expander(
-        "Preview Active Expected Values"
-    ):
-        st.json(normalized_expected)
-
-
-with extract_tab:
-    st.header("Individual Extraction (Optional)")
-
-    plain_tab, ocr_tab, ml_tab, llm_tab = st.tabs(
-        [
-            "Python",
-            "OCR + Python",
-            "Custom ML + Python",
-            "LLM + Python",
-        ]
-    )
-
-    with plain_tab:
-        st.subheader("Plain Python Extraction")
-
-        st.info(
-            "Reads embedded PDF form-widget names "
-            "and values using PyMuPDF, then maps "
-            "them into the common 38-field CIOMS "
-            "schema. This approach requires a "
-            "fillable PDF with accessible widgets."
-        )
-
-        if st.button("Run Python Extraction"):
-            if not Path("data/filled_form.pdf").exists():
-                st.error("Please upload the filled PDF form first.")
-            else:
-                result = run_with_progress(
-                    "Python Extraction",
-                    run_plain_python
-                )
-                st.json(clean_display_output(result))
-
-    with ocr_tab:
-        st.subheader("OCR + Python Extraction")
-
-        st.info(
-            "Renders the PDF page visually, applies "
-            "OCR to recognize visible content, and "
-            "uses Python logic to map the recognized "
-            "values into the 38-field CIOMS schema."
-        )
-
-        if st.button("Run OCR Extraction"):
-            if not Path("data/filled_form.pdf").exists():
-                st.error("Please upload the filled PDF form first.")
-            else:
-                result = run_with_progress(
-                    "OCR extraction",
-                    run_ocr_python
-                )
-
-                if str(result.get("ocr_status", "")).lower().startswith("failed"):
-                    st.warning(result.get("ocr_status"))
-
-                st.json(clean_display_output(result))
-
-        if Path("outputs/reports/ocr_raw_text.txt").exists():
-            with st.expander("View OCR Raw Text"):
-                st.text(
-                    Path("outputs/reports/ocr_raw_text.txt").read_text(
-                        encoding="utf-8"
-                    )
-                )
-
-    with ml_tab:
-        st.subheader("Custom ML + Python Extraction")
-
-        st.info(
-            "Processes rendered PDF pixels using a "
-            "fine-tuned CRNN for 23 text fields and "
-            "a separately trained checkbox CNN for "
-            "15 checkbox fields. The models do not "
-            "receive Expected Values during inference."
-        )
-
-        if st.button("Run Custom ML Extraction"):
-            if not Path("data/filled_form.pdf").exists():
-                st.error("Please upload the filled PDF form first.")
-            else:
-                result = run_with_progress(
-                    "Custom ML extraction",
-                    run_custom_ml
-                )
-                st.json(clean_display_output(result))
-
-    with llm_tab:
-        st.subheader("LLM Schema Mapping")
-
-        st.info(
-            "Uses an LLM to map Python-extracted PDF "
-            "form-field values into the required "
-            "38-field JSON schema. This is schema "
-            "mapping, not independent visual PDF "
-            "extraction."
-        )
-
-        if st.button("Run LLM Extraction"):
-            if not Path("data/filled_form.pdf").exists():
-                st.error("Please upload the filled PDF form first.")
-            else:
-                result = run_with_progress(
-                    "LLM extraction",
-                    run_llm
-                )
-
-                if result.get("llm_status", "").lower() != "success":
-                    st.warning(
-                        result.get(
-                            "llm_status",
-                            "LLM extraction completed with warning."
-                        )
-                    )
-
-                st.json(clean_display_output(result))
-
-
-with compare_tab:
-    st.header("Compare & Export Results")
-
-    st.write(
-        "All four approaches are evaluated against "
-        "the independently provided Expected Values "
-        "using normalized exact-match field-level "
-        "evaluation."
-    )
-
-    st.subheader("Extraction Approach Briefs")
-
-    (
-        plain_brief_column,
-        ocr_brief_column,
-        ml_brief_column,
-        llm_brief_column,
-    ) = st.columns(4)
-
-    with plain_brief_column:
-        st.markdown("#### Plain Python")
-        st.write(
-            "Reads embedded PDF form-widget names "
-            "and values with PyMuPDF, then maps them "
-            "to the common 38-field CIOMS schema."
-        )
-
-    with ocr_brief_column:
-        st.markdown("#### OCR + Python")
-        st.write(
-            "Renders the PDF visually, performs OCR, "
-            "and uses Python logic to map recognized "
-            "content into the CIOMS field schema."
-        )
-
-    with ml_brief_column:
-        st.markdown("#### Custom ML + Python")
-        st.write(
-            "Uses the fine-tuned CRNN for 23 text "
-            "fields and the custom checkbox CNN for "
-            "15 checkbox fields from rendered pixels."
-        )
-
-    with llm_brief_column:
-        st.markdown("#### LLM Schema Mapping")
-        st.write(
-            "Uses an LLM to map Python-extracted PDF "
-            "form-field values into the required "
-            "38-field JSON schema."
-        )
-
-    st.caption(
-        "Current Expected Values source: "
-        f"{st.session_state['expected_source']}"
-    )
-
-    pdf_is_ready = (
-        bool(
-            st.session_state.get(
-                "uploaded_pdf_hash"
-            )
-        )
-        and Path(
-            "data/filled_form.pdf"
-        ).is_file()
-    )
-
-    expected_values_are_ready = (
-        st.session_state["expected_source"]
-        != "Not provided"
-    )
-
-    comparison_is_ready = (
-        pdf_is_ready
-        and expected_values_are_ready
-    )
-
-    st.subheader("Comparison Readiness")
-
-    readiness_left, readiness_right = (
-        st.columns(2)
-    )
-
-    with readiness_left:
-        if pdf_is_ready:
-            st.success(
-                "Filled CIOMS PDF uploaded"
-            )
-        else:
-            st.error(
-                "Filled CIOMS PDF not uploaded"
-            )
-
-    with readiness_right:
-        if expected_values_are_ready:
-            st.success(
-                "Expected Values provided"
-            )
-        else:
-            st.error(
-                "Expected Values not provided"
-            )
-
-    if not comparison_is_ready:
-        st.info(
-            "Complete both readiness requirements "
-            "to enable Extract All Approaches & "
-            "Run Comparison."
-        )
-
-    if st.button(
-        "Extract All Approaches & Run Comparison",
-        type="primary",
-        disabled=not comparison_is_ready,
-        help=(
-            None
-            if comparison_is_ready
-            else (
-                "Upload a filled CIOMS PDF and "
-                "provide Expected Values first."
-            )
-        ),
-    ):
-        if not Path(
-            "data/filled_form.pdf"
-        ).exists():
-            st.error(
-                "Please upload the filled CIOMS PDF "
-                "first."
-            )
-
-        elif (
-            st.session_state[
-                "expected_source"
-            ]
-            == "Not provided"
-        ):
-            st.error(
-                "Please upload a verified Expected "
-                "JSON or save values from the manual "
-                "CIOMS form before comparison."
-            )
-
-        else:
-            active_expected = (
-                normalize_expected_values(
+    status_steps = [
+        {
+            "name": "Plain Python",
+            "icon": "🐍",
+            "function": run_plain_python,
+        },
+        {
+            "name": "OCR + Python",
+            "icon": "👁",
+            "function": run_ocr_python,
+        },
+        {
+            "name": "Custom ML",
+            "icon": "🧠",
+            "function": run_custom_ml,
+        },
+        {
+            "name": "LLM + Python",
+            "icon": "✨",
+            "function": run_llm,
+        },
+        {
+            "name": "Comparison",
+            "icon": "📊",
+            "function": lambda: compare_all_outputs(
+                expected_values_path=(
+                    "outputs/json/"
+                    "expected_values.json"
+                ),
+                expected_source=(
                     st.session_state[
-                        "expected_values"
+                        "expected_source"
                     ]
-                )
+                ),
+            ),
+        },
+    ]
+
+    status_columns = st.columns(5)
+
+    status_placeholders = []
+
+    for column in status_columns:
+        with column:
+            status_placeholders.append(
+                st.empty()
             )
 
-            save_json(
-                active_expected,
-                "outputs/json/expected_values.json",
+    def render_status_card(
+        placeholder,
+        icon,
+        name,
+        state,
+    ):
+        state_styles = {
+            "Pending": {
+                "symbol": "○",
+                "background": "#f3f4f6",
+                "border": "#9ca3af",
+                "color": "#4b5563",
+            },
+            "Running": {
+                "symbol": "◌",
+                "background": "#eff6ff",
+                "border": "#2563eb",
+                "color": "#1d4ed8",
+            },
+            "Completed": {
+                "symbol": "✓",
+                "background": "#ecfdf5",
+                "border": "#16a34a",
+                "color": "#15803d",
+            },
+            "Failed": {
+                "symbol": "✕",
+                "background": "#fef2f2",
+                "border": "#dc2626",
+                "color": "#b91c1c",
+            },
+        }
+
+        style = state_styles[state]
+
+        placeholder.markdown(
+            f"""
+            <div style="
+                min-height: 112px;
+                padding: 14px 10px;
+                border: 2px solid {style["border"]};
+                border-radius: 12px;
+                background: {style["background"]};
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+            ">
+                <div style="font-size: 25px;">
+                    {icon}
+                </div>
+                <div style="
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: #111827;
+                ">
+                    {name}
+                </div>
+                <div style="
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: {style["color"]};
+                ">
+                    {style["symbol"]} {state}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    for index, step in enumerate(
+        status_steps
+    ):
+        render_status_card(
+            status_placeholders[index],
+            step["icon"],
+            step["name"],
+            "Pending",
+        )
+
+    failed_step = None
+
+    try:
+        for index, step in enumerate(
+            status_steps
+        ):
+            render_status_card(
+                status_placeholders[index],
+                step["icon"],
+                step["name"],
+                "Running",
             )
 
             try:
-                run_with_progress(
-                    "Plain Python extraction",
-                    run_plain_python,
+                step["function"]()
+
+                render_status_card(
+                    status_placeholders[index],
+                    step["icon"],
+                    step["name"],
+                    "Completed",
                 )
 
-                run_with_progress(
-                    "OCR + Python extraction",
-                    run_ocr_python,
+            except Exception:
+                failed_step = step["name"]
+
+                render_status_card(
+                    status_placeholders[index],
+                    step["icon"],
+                    step["name"],
+                    "Failed",
                 )
 
-                run_with_progress(
-                    "Custom ML + Python extraction",
-                    run_custom_ml,
-                )
+                raise
 
-                run_with_progress(
-                    "LLM schema mapping",
-                    run_llm,
-                )
+        st.session_state[
+            "comparison_completed"
+        ] = True
 
-                run_with_progress(
-                    "Expected-value comparison",
-                    lambda: compare_all_outputs(
-                        expected_values_path=(
-                            "outputs/json/"
-                            "expected_values.json"
-                        ),
-                        expected_source=(
-                            st.session_state[
-                                "expected_source"
-                            ]
-                        ),
-                    ),
-                )
+        st.toast(
+            "Extraction and comparison completed.",
+            icon="✅",
+        )
 
-                field_df = (
-                    build_field_level_dataframe()
-                )
+    except Exception as error:
+        st.session_state[
+            "comparison_completed"
+        ] = False
 
-                confusion_df = (
-                    build_confusion_dataframe()
-                )
+        st.error(
+            f"{failed_step or 'Processing'} failed: "
+            f"{error}"
+        )
 
-                field_df.to_csv(
-                    "outputs/reports/"
-                    "field_level_report.csv",
-                    index=False,
-                )
+report_ready = (
+    st.session_state.get(
+        "comparison_completed",
+        False,
+    )
+    and Path(
+        "outputs/reports/comparison_report.csv"
+    ).is_file()
+    and Path(
+        "outputs/json/expected_values.json"
+    ).is_file()
+)
 
-                confusion_df.to_csv(
-                    "outputs/reports/"
-                    "confusion_summary.csv",
-                    index=False,
-                )
+if report_ready:
+    st.divider()
 
-                st.success(
-                    "Comparison results are ready "
-                    "below."
-                )
+    st.header("Field-Level Comparison")
 
-            except Exception as error:
-                st.error(
-                    "Comparison failed: "
-                    f"{error}"
-                )
+    field_df = (
+        build_field_level_dataframe()
+    )
 
-    if (
-        st.session_state["expected_source"]
-        != "Not provided"
-        and Path(
-            "outputs/json/expected_values.json"
-        ).is_file()
-        and Path(
-            "outputs/reports/comparison_report.csv"
-        ).is_file()
+    st.caption(
+        "Green indicates an exact normalized "
+        "match. Red indicates an incorrect, "
+        "missing, or unexpected value. Gray "
+        "contains the verified Expected value."
+    )
+
+    st.dataframe(
+        style_field_level_report(
+            field_df
+        ),
+        width="stretch",
+        hide_index=True,
+    )
+
+    st.divider()
+
+    st.header(
+        "Overall Extraction Quality Matrices"
+    )
+
+    st.caption(
+        "Each matrix summarizes mutually exclusive "
+        "field-level outcomes across all 38 CIOMS "
+        "fields. The four cells always total 38. "
+        "Exact-value correctness is evaluated against "
+        "the verified Expected JSON."
+    )
+
+    evaluation_files = {
+        "Plain Python": (
+            "outputs/json/"
+            "plain_python_evaluation.json"
+        ),
+        "OCR + Python": (
+            "outputs/json/"
+            "ocr_plus_python_evaluation.json"
+        ),
+        "Custom ML + Python": (
+            "outputs/json/"
+            "custom_ml_plus_python_evaluation.json"
+        ),
+        "LLM + Python": (
+            "outputs/json/"
+            "llm_schema_mapping_evaluation.json"
+        ),
+    }
+
+    matrix_columns = st.columns(2)
+
+    for matrix_index, (
+        approach,
+        evaluation_path,
+    ) in enumerate(
+        evaluation_files.items()
     ):
-        summary_df = pd.read_csv(
-            "outputs/reports/comparison_report.csv"
+        if not Path(
+            evaluation_path
+        ).is_file():
+            continue
+
+        evaluation = load_json(
+            evaluation_path
         )
 
-        summary_df = summary_df.rename(
-            columns={
-                "TP": "True Positive (TP)",
-                "FP": "False Positive (FP)",
-                "FN": "False Negative (FN)",
-                "TN": "True Negative (TN)",
-            }
+        metrics = evaluation.get(
+            "metrics",
+            {},
         )
 
-        summary_df = summary_df.drop(
-            columns=["Wrong/Missing Fields"],
-            errors="ignore",
+        correct_non_empty = int(
+            metrics.get(
+                "true_positive",
+                0,
+            )
         )
 
-        field_df = (
-            build_field_level_dataframe()
+        correct_blank = int(
+            metrics.get(
+                "true_negative",
+                0,
+            )
         )
 
-        confusion_df = (
-            build_confusion_dataframe()
+        incorrect_value = int(
+            metrics.get(
+                "incorrect_values",
+                0,
+            )
         )
 
-        st.subheader(
-            "Approach Comparison Summary"
+        missing_value = int(
+            metrics.get(
+                "missing_values",
+                0,
+            )
         )
 
-        st.caption(
-            "True Positive means a correct non-empty "
-            "value. False Positive means an unexpected "
-            "or incorrect produced value. False Negative "
-            "means an expected value was not correctly "
-            "recovered. True Negative means both "
-            "Expected and extracted values are blank."
+        unexpected_value = int(
+            metrics.get(
+                "unexpected_values",
+                0,
+            )
         )
 
-        st.dataframe(
-            summary_df,
-            width="stretch",
-            hide_index=True,
+        missing_or_unexpected = (
+            missing_value
+            + unexpected_value
         )
 
-        with st.expander(
-            "Field-Level Report",
-            expanded=True,
-        ):
+        total_fields = int(
+            metrics.get(
+                "total_fields",
+                0,
+            )
+        )
+
+        outcome_total = (
+            correct_non_empty
+            + incorrect_value
+            + correct_blank
+            + missing_or_unexpected
+        )
+
+        if outcome_total != total_fields:
+            with matrix_columns[
+                matrix_index % 2
+            ]:
+                st.error(
+                    f"{approach}: outcome total "
+                    f"{outcome_total} does not match "
+                    f"the expected {total_fields} "
+                    "fields."
+                )
+
+            continue
+
+        matrix = [
+            [
+                correct_non_empty,
+                incorrect_value,
+            ],
+            [
+                correct_blank,
+                missing_or_unexpected,
+            ],
+        ]
+
+        import matplotlib.pyplot as plt
+        from matplotlib.patches import Rectangle
+
+        figure, axis = plt.subplots(
+            figsize=(5.8, 4.4)
+        )
+
+        axis.set_xlim(0, 2)
+        axis.set_ylim(0, 2)
+        axis.axis("off")
+
+        axis.set_title(
+            approach,
+            fontweight="bold",
+            fontsize=15,
+            pad=16,
+        )
+
+        outcome_cells = [
+            {
+                "x": 0,
+                "y": 1,
+                "label": "Correct Non-Empty",
+                "value": correct_non_empty,
+                "background": "#dcfce7",
+                "border": "#16a34a",
+                "text": "#166534",
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "label": "Incorrect Value",
+                "value": incorrect_value,
+                "background": "#fee2e2",
+                "border": "#dc2626",
+                "text": "#991b1b",
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "label": "Correct Blank",
+                "value": correct_blank,
+                "background": "#e5e7eb",
+                "border": "#6b7280",
+                "text": "#374151",
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "label": "Missing / Unexpected",
+                "value": missing_or_unexpected,
+                "background": "#fef3c7",
+                "border": "#d97706",
+                "text": "#92400e",
+            },
+        ]
+
+        for cell in outcome_cells:
+            axis.add_patch(
+                Rectangle(
+                    (
+                        cell["x"],
+                        cell["y"],
+                    ),
+                    1,
+                    1,
+                    facecolor=cell[
+                        "background"
+                    ],
+                    edgecolor=cell[
+                        "border"
+                    ],
+                    linewidth=2.2,
+                )
+            )
+
+            axis.text(
+                cell["x"] + 0.5,
+                cell["y"] + 0.68,
+                cell["label"],
+                ha="center",
+                va="center",
+                fontsize=10,
+                fontweight="bold",
+                color=cell["text"],
+                wrap=True,
+            )
+
+            axis.text(
+                cell["x"] + 0.5,
+                cell["y"] + 0.35,
+                str(cell["value"]),
+                ha="center",
+                va="center",
+                fontsize=24,
+                fontweight="bold",
+                color=cell["text"],
+            )
+
+        figure.text(
+            0.5,
+            0.025,
+            (
+                f"Total evaluated fields: "
+                f"{outcome_total}"
+            ),
+            ha="center",
+            fontsize=10,
+            fontweight="bold",
+            color="#111827",
+        )
+
+        figure.subplots_adjust(
+            left=0.04,
+            right=0.96,
+            top=0.86,
+            bottom=0.12,
+        )
+
+        with matrix_columns[
+            matrix_index % 2
+        ]:
+            st.pyplot(
+                figure,
+                use_container_width=True,
+            )
+
             st.caption(
-                "Green indicates an exact normalized "
-                "match. Red indicates an incorrect, "
-                "missing, or unexpected value. Gray "
-                "contains the independently supplied "
-                "Expected value."
+                f"{approach}: "
+                f"{correct_non_empty} correct "
+                "non-empty, "
+                f"{correct_blank} correct blank, "
+                f"{incorrect_value} incorrect, "
+                f"{missing_value} missing, and "
+                f"{unexpected_value} unexpected."
             )
 
-            st.dataframe(
-                style_field_level_report(
-                    field_df
-                ),
-                width="stretch",
-                hide_index=True,
-            )
-
-        st.subheader("Export Results")
-
-        csv_bytes = field_df.to_csv(index=False).encode("utf-8-sig")
-        excel_bytes = create_excel_bytes(summary_df, field_df, confusion_df)
-        pdf_bytes = create_pdf_bytes(summary_df, field_df, confusion_df)
-
-        col1, col2, col3 = st.columns(3)
-
-        with col1:
-            st.download_button(
-                "Download CSV",
-                csv_bytes,
-                file_name="field_level_comparison_report.csv",
-                mime="text/csv"
-            )
-
-        with col2:
-            st.download_button(
-                "Download Excel",
-                excel_bytes,
-                file_name="extraction_quality_report.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
-
-        with col3:
-            st.download_button(
-                "Download PDF",
-                pdf_bytes,
-                file_name="extraction_quality_report.pdf",
-                mime="application/pdf"
-            )
+        plt.close(figure)
