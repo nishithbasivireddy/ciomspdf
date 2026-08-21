@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>CIOMS Expected Values Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #component-root {
+            width: 100%;
+            overflow-x: auto;
+            padding: 8px 4px 16px;
+        }
+
+        #form-shell {
+            position: relative;
+            width: min(100%, 1000px);
+            min-width: 760px;
+            margin: 0 auto;
+            background: white;
+            box-shadow:
+                0 1px 4px rgba(0, 0, 0, 0.18);
+        }
+
+        #form-background {
+            display: block;
+            width: 100%;
+            height: auto;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        #controls-layer {
+            position: absolute;
+            inset: 0;
+        }
+
+        .cioms-text-input,
+        .cioms-textarea {
+            position: absolute;
+            margin: 0;
+            padding: 1px 3px;
+            border: 1px solid rgba(0, 80, 160, 0.55);
+            border-radius: 1px;
+            outline: none;
+            background: rgba(230, 244, 255, 0.78);
+            color: #111;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(8px, 1.05vw, 13px);
+            line-height: 1.15;
+            resize: none;
+            overflow: auto;
+        }
+
+        .cioms-text-input:focus,
+        .cioms-textarea:focus {
+            border: 2px solid #005a9e;
+            background: rgba(255, 255, 255, 0.96);
+            z-index: 20;
+        }
+
+        .cioms-checkbox {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #005a9e;
+            border-radius: 1px;
+            background: rgba(255, 255, 255, 0.92);
+            cursor: pointer;
+            min-width: 10px;
+            min-height: 10px;
+        }
+
+        .cioms-checkbox:hover,
+        .cioms-checkbox:focus {
+            outline: 2px solid rgba(0, 90, 158, 0.35);
+            outline-offset: 1px;
+        }
+
+        .cioms-checkbox:checked {
+            background: #ffffff;
+        }
+
+        .cioms-checkbox:checked::after {
+            content: "";
+            position: absolute;
+            left: 18%;
+            top: 2%;
+            width: 38%;
+            height: 70%;
+            border: solid #005a9e;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        #status-bar {
+            width: min(100%, 1000px);
+            min-width: 760px;
+            margin: 8px auto 0;
+            padding: 8px 10px;
+            border: 1px solid #d7dce2;
+            border-radius: 4px;
+            background: #f7f8fa;
+            color: #30343b;
+            font-size: 13px;
+        }
+
+        #status-bar strong {
+            color: #005a9e;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="component-root">
+        <div id="form-shell">
+            <img id="form-background" src="blank_cioms.png" alt="Blank CIOMS form" />
+            <div id="controls-layer"></div>
+        </div>
+
+        <div id="status-bar">
+            <strong>Manual Expected Values:</strong>
+            enter values exactly as expected. These values are
+            returned for evaluation only.
+        </div>
+    </div>
+
+    <script>
+        const STREAMLIT_MESSAGE = "streamlit:";
+        const root = document.getElementById(
+            "component-root"
+        );
+        const shell = document.getElementById(
+            "form-shell"
+        );
+        const controlsLayer = document.getElementById(
+            "controls-layer"
+        );
+
+        let currentValues = {};
+        let fieldSchema = {};
+        let checkboxSchema = {};
+        let reverseFieldSchema = {};
+        let reverseCheckboxSchema = {};
+        let currentLayoutSignature = "";
+
+        const exclusiveGroups = [
+            [
+                "reaction_abated_yes",
+                "reaction_abated_no",
+                "reaction_abated_na"
+            ],
+            [
+                "reaction_reappeared_yes",
+                "reaction_reappeared_no",
+                "reaction_reappeared_na"
+            ],
+            [
+                "report_type_initial",
+                "report_type_followup"
+            ]
+        ];
+
+        function sendMessage(type, data = {}) {
+            window.parent.postMessage(
+                {
+                    isStreamlitMessage: true,
+                    type: STREAMLIT_MESSAGE + type,
+                    ...data
+                },
+                "*"
+            );
+        }
+
+        function setComponentReady() {
+            sendMessage(
+                "componentReady",
+                {
+                    apiVersion: 1
+                }
+            );
+        }
+
+        function setComponentValue(value) {
+            sendMessage(
+                "setComponentValue",
+                {
+                    value: value
+                }
+            );
+        }
+
+        function setFrameHeight() {
+            const height = Math.ceil(
+                root.getBoundingClientRect().height
+            );
+
+            sendMessage(
+                "setFrameHeight",
+                {
+                    height: height
+                }
+            );
+        }
+
+        function percentage(
+            value,
+            total
+        ) {
+            return `${(value / total) * 100}%`;
+        }
+
+        function normalizeValues(argsValues) {
+            const normalized = {};
+
+            Object.keys(fieldSchema).forEach(
+                (field) => {
+                    const raw = argsValues?.[field];
+                    normalized[field] =
+                        raw === null ||
+                        raw === undefined
+                            ? ""
+                            : String(raw);
+                }
+            );
+
+            Object.keys(checkboxSchema).forEach(
+                (field) => {
+                    normalized[field] =
+                        String(
+                            argsValues?.[field] ?? "Off"
+                        ).trim().toLowerCase()
+                        === "yes"
+                            ? "Yes"
+                            : "Off";
+                }
+            );
+
+            return normalized;
+        }
+
+        function updateStatus() {
+            const textFields = Object.keys(
+                fieldSchema
+            );
+
+            const checkboxFields = Object.keys(
+                checkboxSchema
+            );
+
+            const enteredTextCount = textFields.filter(
+                (field) =>
+                    String(
+                        currentValues[field] ?? ""
+                    ).trim() !== ""
+            ).length;
+
+            const checkedCount = checkboxFields.filter(
+                (field) =>
+                    currentValues[field] === "Yes"
+            ).length;
+
+            document.getElementById(
+                "status-bar"
+            ).innerHTML = `
+                <strong>Manual Expected Values:</strong>
+                ${enteredTextCount} text fields populated,
+                ${checkedCount} checkboxes selected.
+                Values are used only for evaluation.
+            `;
+        }
+
+        function emitValues() {
+            updateStatus();
+            setComponentValue(
+                { ...currentValues }
+            );
+        }
+
+        function applyExclusiveLogic(
+            selectedField
+        ) {
+            if (
+                currentValues[selectedField]
+                !== "Yes"
+            ) {
+                return;
+            }
+
+            const group = exclusiveGroups.find(
+                (candidate) =>
+                    candidate.includes(
+                        selectedField
+                    )
+            );
+
+            if (!group) {
+                return;
+            }
+
+            group.forEach(
+                (field) => {
+                    if (field === selectedField) {
+                        return;
+                    }
+
+                    currentValues[field] = "Off";
+
+                    const control =
+                        document.querySelector(
+                            `[data-field="${field}"]`
+                        );
+
+                    if (control) {
+                        control.checked = false;
+                    }
+                }
+            );
+        }
+
+        function createTextControl(
+            widget,
+            outputField,
+            pageWidth,
+            pageHeight
+        ) {
+            const rect = widget.rect;
+            const height =
+                rect[3] - rect[1];
+
+            const control =
+                document.createElement(
+                    height > 28
+                        ? "textarea"
+                        : "input"
+                );
+
+            if (
+                control.tagName.toLowerCase()
+                === "input"
+            ) {
+                control.type = "text";
+                control.className =
+                    "cioms-text-input";
+            } else {
+                control.className =
+                    "cioms-textarea";
+            }
+
+            control.dataset.field =
+                outputField;
+
+            control.setAttribute(
+                "aria-label",
+                fieldSchema[outputField]?.label
+                ?? outputField
+            );
+
+            control.value =
+                currentValues[outputField]
+                ?? "";
+
+            control.style.left =
+                percentage(
+                    rect[0],
+                    pageWidth
+                );
+
+            control.style.top =
+                percentage(
+                    rect[1],
+                    pageHeight
+                );
+
+            control.style.width =
+                percentage(
+                    rect[2] - rect[0],
+                    pageWidth
+                );
+
+            control.style.height =
+                percentage(
+                    height,
+                    pageHeight
+                );
+
+            control.addEventListener(
+                "input",
+                () => {
+                    currentValues[outputField] =
+                        control.value;
+
+                    emitValues();
+                }
+            );
+
+            controlsLayer.appendChild(
+                control
+            );
+        }
+
+        function createCheckboxControl(
+            widget,
+            outputField,
+            pageWidth,
+            pageHeight
+        ) {
+            const rect = widget.rect;
+            const control =
+                document.createElement(
+                    "input"
+                );
+
+            control.type = "checkbox";
+            control.className =
+                "cioms-checkbox";
+            control.dataset.field =
+                outputField;
+
+            control.setAttribute(
+                "aria-label",
+                outputField
+            );
+
+            control.checked =
+                currentValues[outputField]
+                === "Yes";
+
+            control.style.left =
+                percentage(
+                    rect[0],
+                    pageWidth
+                );
+
+            control.style.top =
+                percentage(
+                    rect[1],
+                    pageHeight
+                );
+
+            control.style.width =
+                percentage(
+                    rect[2] - rect[0],
+                    pageWidth
+                );
+
+            control.style.height =
+                percentage(
+                    rect[3] - rect[1],
+                    pageHeight
+                );
+
+            control.addEventListener(
+                "change",
+                () => {
+                    currentValues[outputField] =
+                        control.checked
+                            ? "Yes"
+                            : "Off";
+
+                    applyExclusiveLogic(
+                        outputField
+                    );
+
+                    emitValues();
+                }
+            );
+
+            controlsLayer.appendChild(
+                control
+            );
+        }
+
+        function buildReverseMappings() {
+            reverseFieldSchema = {};
+            reverseCheckboxSchema = {};
+
+            Object.entries(
+                fieldSchema
+            ).forEach(
+                ([outputField, metadata]) => {
+                    reverseFieldSchema[
+                        metadata.pdf_field
+                    ] = outputField;
+                }
+            );
+
+            Object.entries(
+                checkboxSchema
+            ).forEach(
+                ([outputField, pdfField]) => {
+                    reverseCheckboxSchema[
+                        pdfField
+                    ] = outputField;
+                }
+            );
+        }
+
+        function renderControls(layout) {
+            controlsLayer.replaceChildren();
+
+            const pageWidth =
+                Number(layout.page_width);
+
+            const pageHeight =
+                Number(layout.page_height);
+
+            layout.widgets.forEach(
+                (widget) => {
+                    const outputTextField =
+                        reverseFieldSchema[
+                            widget.pdf_field
+                        ];
+
+                    const outputCheckboxField =
+                        reverseCheckboxSchema[
+                            widget.pdf_field
+                        ];
+
+                    if (outputTextField) {
+                        createTextControl(
+                            widget,
+                            outputTextField,
+                            pageWidth,
+                            pageHeight
+                        );
+                    } else if (
+                        outputCheckboxField
+                    ) {
+                        createCheckboxControl(
+                            widget,
+                            outputCheckboxField,
+                            pageWidth,
+                            pageHeight
+                        );
+                    }
+                }
+            );
+
+            updateStatus();
+
+            requestAnimationFrame(
+                setFrameHeight
+            );
+        }
+
+        function layoutSignature(
+            layout
+        ) {
+            return JSON.stringify(
+                {
+                    width: layout.page_width,
+                    height: layout.page_height,
+                    widgets: layout.widgets
+                }
+            );
+        }
+
+        function handleRender(event) {
+            const message = event.data;
+
+            if (
+                !message ||
+                message.type
+                !== STREAMLIT_MESSAGE + "render"
+            ) {
+                return;
+            }
+
+            const args = message.args || {};
+
+            fieldSchema =
+                args.field_schema || {};
+
+            checkboxSchema =
+                args.checkbox_schema || {};
+
+            buildReverseMappings();
+
+            currentValues =
+                normalizeValues(
+                    args.values || {}
+                );
+
+            const layout =
+                args.layout || {};
+
+            const signature =
+                layoutSignature(layout);
+
+            if (
+                signature
+                !== currentLayoutSignature
+            ) {
+                currentLayoutSignature =
+                    signature;
+
+                renderControls(layout);
+            } else {
+                Object.entries(
+                    currentValues
+                ).forEach(
+                    ([field, value]) => {
+                        const control =
+                            document.querySelector(
+                                `[data-field="${field}"]`
+                            );
+
+                        if (!control) {
+                            return;
+                        }
+
+                        if (
+                            control.type
+                            === "checkbox"
+                        ) {
+                            control.checked =
+                                value === "Yes";
+                        } else if (
+                            control.value
+                            !== value
+                        ) {
+                            control.value = value;
+                        }
+                    }
+                );
+
+                updateStatus();
+                setFrameHeight();
+            }
+        }
+
+        window.addEventListener(
+            "message",
+            handleRender
+        );
+
+        window.addEventListener(
+            "resize",
+            setFrameHeight
+        );
+
+        new ResizeObserver(
+            setFrameHeight
+        ).observe(root);
+
+        document.getElementById(
+            "form-background"
+        ).addEventListener(
+            "load",
+            setFrameHeight
+        );
+
+        setComponentReady();
+        setFrameHeight();
+    </script>
+</body>
+</html>
+
